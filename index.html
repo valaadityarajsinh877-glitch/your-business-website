@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A modern all-in-one business website template.">
+<title>Your Business — Premium Business</title>
+<style>
+:root{--bg:#0a0d14;--card:#111725;--text:#f7f8fb;--muted:#aab2c0;--accent:#7c5cff;--accent2:#22d3ee;--line:#222b3d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}a{text-decoration:none;color:inherit}.wrap{max-width:1160px;margin:auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:rgba(10,13,20,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:21px}.logo span{color:var(--accent2)}.links{display:flex;gap:24px;color:var(--muted);font-size:14px}.links a:hover{color:white}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--accent),#9b7bff);padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px #7c5cff30}.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}
+.hero{padding:105px 0 80px;background:radial-gradient(circle at 80% 20%,#7c5cff22,transparent 35%),radial-gradient(circle at 20% 20%,#22d3ee14,transparent 30%)}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}.eyebrow{color:var(--accent2);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(44px,7vw,76px);line-height:1.02;margin:15px 0}.lead{font-size:18px;color:var(--muted);max-width:650px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-card{min-height:390px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,#151c2c,#0d121d);padding:28px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 30px 80px #0007}
+.hero-card .big{font-size:80px;font-weight:900;line-height:1}.badge{display:inline-block;padding:7px 11px;border-radius:99px;background:#22d3ee18;color:var(--accent2);font-size:12px;font-weight:800}
+section{padding:78px 0}.section-head{max-width:700px;margin-bottom:32px}.section-head h2{font-size:38px;line-height:1.1;margin:8px 0}.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:25px}.icon{font-size:30px}.card h3{margin:12px 0 6px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:35px}.stat{padding:22px;border:1px solid var(--line);border-radius:18px;background:#0e1420}.stat b{font-size:30px;display:block}
+.price{font-size:38px;font-weight:900}.price small{font-size:14px;color:var(--muted);font-weight:500}
+.review{font-size:16px}.stars{color:#ffd166;letter-spacing:2px}.person{margin-top:18px;font-weight:800}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}.photo{height:190px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(135deg,#20283a,#101522);display:grid;place-items:center;font-size:42px}.photo:first-child{height:394px;grid-row:span 2}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:800}
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}.form{display:grid;gap:12px}.form input,.form textarea{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:#0e1420;color:white;font:inherit}.form textarea{min-height:140px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted)}.footerline{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+#top{position:fixed;right:18px;bottom:18px;border:1px solid var(--line);background:#121927;color:white;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;opacity:.9}
+@media(max-width:800px){.links{display:none}.grid,.contact{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:1fr 1fr}.photo:first-child{height:250px;grid-column:span 2}.hero{padding-top:70px}section{padding:58px 0}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#home">YOUR<span>BUSINESS</span></a>
+<div class="links"><a href="#about">About</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+<a class="btn" href="#contact">Get Started</a>
+</nav></div></header>
+
+<main id="home">
+<section class="hero"><div class="wrap grid">
+<div><div class="eyebrow">Premium • Trusted • Professional</div><h1>Grow your business with confidence.</h1><p class="lead">A complete modern business experience for your customers — services, products, offers, booking and support, all in one place.</p><div class="actions"><a class="btn" href="#services">Explore Services</a><a class="btn ghost" href="#contact">Talk to Us</a></div>
+<div class="stats"><div class="stat"><b>10+</b><span class="muted">Years Experience</span></div><div class="stat"><b>2.5K+</b><span class="muted">Happy Clients</span></div><div class="stat"><b>98%</b><span class="muted">Satisfaction</span></div><div class="stat"><b>24/7</b><span class="muted">Support</span></div></div></div>
+<div class="hero-card"><span class="badge">BUSINESS OF THE MONTH</span><div class="big">A→Z</div><h3>Everything your customers need.</h3><p class="muted">Replace this demo content with your real business details, photos, prices and contact information.</p></div>
+</div></section>
+
+<section id="about"><div class="wrap"><div class="section-head"><div class="eyebrow">About Us</div><h2>Built around your customers.</h2><p class="muted">We combine quality, transparent service and a customer-first approach to deliver results that last.</p></div>
+<div class="cards"><div class="card"><div class="icon">🎯</div><h3>Our Mission</h3><p class="muted">Deliver reliable, high-quality solutions that create real value.</p></div><div class="card"><div class="icon">💎</div><h3>Our Values</h3><p class="muted">Quality, honesty, speed and long-term relationships.</p></div><div class="card"><div class="icon">🚀</div><h3>Our Vision</h3><p class="muted">Become the first choice customers recommend to others.</p></div></div></div></section>
+
+<section id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What We Do</div><h2>Services that move you forward.</h2></div>
+<div class="cards"><div class="card"><div class="icon">⚡</div><h3>Service One</h3><p class="muted">Fast, professional and tailored to your needs.</p></div><div class="card"><div class="icon">🛠️</div><h3>Service Two</h3><p class="muted">Practical solutions with dependable support.</p></div><div class="card"><div class="icon">📈</div><h3>Service Three</h3><p class="muted">Smart strategies designed for sustainable growth.</p></div><div class="card"><div class="icon">🤝</div><h3>Consulting</h3><p class="muted">Clear guidance so you can make better decisions.</p></div><div class="card"><div class="icon">🎁</div><h3>Special Offers</h3><p class="muted">Limited-time deals for new and returning customers.</p></div><div class="card"><div class="icon">📞</div><h3>Support</h3><p class="muted">Friendly help whenever you need us.</p></div></div></div></section>
+
+<section id="pricing"><div class="wrap"><div class="section-head"><div class="eyebrow">Pricing</div><h2>Simple plans. No surprises.</h2></div><div class="cards">
+<div class="card"><span class="badge">STARTER</span><h3>Basic</h3><div class="price">₹999 <small>/ plan</small></div><p class="muted">Perfect for getting started.</p><a class="btn" href="#contact">Choose Plan</a></div>
+<div class="card"><span class="badge">POPULAR</span><h3>Pro</h3><div class="price">₹2,499 <small>/ plan</small></div><p class="muted">Best value for growing customers.</p><a class="btn" href="#contact">Choose Plan</a></div>
+<div class="card"><span class="badge">PREMIUM</span><h3>Business</h3><div class="price">₹4,999 <small>/ plan</small></div><p class="muted">Complete solution for serious growth.</p><a class="btn" href="#contact">Choose Plan</a></div>
+</div></div></section>
+
+<section id="gallery"><div class="wrap"><div class="section-head"><div class="eyebrow">Gallery</div><h2>Show your best work.</h2><p class="muted">Swap these placeholders with your real business photos.</p></div><div class="gallery"><div class="photo">📸</div><div class="photo">✨</div><div class="photo">🏆</div><div class="photo">🧑‍💼</div><div class="photo">🏢</div></div></div></section>
+
+<section id="reviews"><div class="wrap"><div class="section-head"><div class="eyebrow">Testimonials</div><h2>Loved by our customers.</h2></div><div class="cards"><div class="card review"><div class="stars">★★★★★</div><p>“Excellent experience. Professional team and genuinely great service.”</p><div class="person">— Customer One</div></div><div class="card review"><div class="stars">★★★★★</div><p>“Fast response, transparent pricing and quality work. Highly recommended.”</p><div class="person">— Customer Two</div></div><div class="card review"><div class="stars">★★★★★</div><p>“They understood exactly what we needed and delivered beyond expectations.”</p><div class="person">— Customer Three</div></div></div></div></section>
+
+<section><div class="wrap faq"><div class="section-head"><div class="eyebrow">FAQ</div><h2>Frequently asked questions.</h2></div>
+<details><summary>How can I book a service?</summary><p class="muted">Use the contact form below or connect with us on WhatsApp.</p></details>
+<details><summary>Do you offer custom packages?</summary><p class="muted">Yes. Tell us what you need and we can create a suitable package.</p></details>
+<details><summary>How do I get support?</summary><p class="muted">Call, email or message us through the contact options below.</p></details>
+</div></section>
+
+<section id="contact"><div class="wrap contact"><div><div class="eyebrow">Contact</div><h2>Let's work together.</h2><p class="muted">Replace the details below with your real business information.</p><p>📞 <b>+91 98765 43210</b></p><p>✉️ hello@yourbusiness.com</p><p>📍 Your City, Gujarat, India</p><div class="actions"><a class="btn" href="https://wa.me/919876543210">WhatsApp</a><a class="btn ghost" href="tel:+919876543210">Call Now</a></div></div>
+<form class="card form" onsubmit="sendForm(event)"><input required placeholder="Your name"><input required type="tel" placeholder="Phone number"><input type="email" placeholder="Email address"><textarea required placeholder="How can we help?"></textarea><button class="btn" type="submit">Send Enquiry</button><small id="msg" class="muted"></small></form></div></section>
+</main>
+
+<footer><div class="wrap footerline"><div><b>YOUR<span style="color:var(--accent2)">BUSINESS</span></b><br>© 2026 All rights reserved.</div><div>Instagram · Facebook · YouTube · Google</div></div></footer>
+<a id="top" href="#home">↑</a>
+<script>
+function sendForm(e){e.preventDefault();document.getElementById('msg').textContent='Thanks! Your enquiry is ready to connect. Add your backend/email service to receive submissions.'}
+</script>
+</body></html>
