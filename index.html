@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +52,7 @@ header{
 .nav-buttons{
   display:flex;
   gap:8px;
+  flex-wrap:wrap;
 }
 
 .nav-btn{
@@ -69,6 +69,16 @@ header{
 
 .seller-btn{
   background:#25D366;
+  color:white;
+}
+
+.login-btn{
+  background:white;
+  color:#111;
+}
+
+.user-btn{
+  background:#444;
   color:white;
 }
 
@@ -246,6 +256,51 @@ header{
   cursor:pointer;
 }
 
+.auth-box{
+  max-width:500px;
+  margin:30px auto;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.auth-box h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.auth-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.auth-box button{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:8px;
+}
+
+.auth-box .signup{
+  background:#25D366;
+}
+
+.auth-status{
+  text-align:center;
+  margin-top:10px;
+  color:#555;
+  font-size:14px;
+}
+
 footer{
   background:#111;
   color:#aaa;
@@ -352,7 +407,6 @@ footer{
 <body>
 
 <header>
-
 <div class="nav">
 
 <div class="logo">
@@ -360,6 +414,19 @@ Valzo <span>Hub</span>
 </div>
 
 <div class="nav-buttons">
+
+<button class="nav-btn login-btn"
+id="loginNavBtn"
+onclick="scrollToAuth()">
+🔐 Login
+</button>
+
+<button class="nav-btn user-btn"
+id="logoutBtn"
+onclick="logout()"
+style="display:none">
+Logout
+</button>
 
 <button class="nav-btn seller-btn"
 onclick="scrollToSeller()">
@@ -372,9 +439,7 @@ onclick="openCart()">
 </button>
 
 </div>
-
 </div>
-
 </header>
 
 
@@ -389,6 +454,43 @@ Shop • Sell • Discover — Everything in one place.
 <a href="#products" class="shop-btn">
 Shop Now
 </a>
+
+</section>
+
+
+<!-- AUTH -->
+
+<section class="section" id="auth">
+
+<div class="auth-box">
+
+<h2>🔐 Valzo Hub Account</h2>
+
+<input
+type="email"
+id="authEmail"
+placeholder="Enter email"
+>
+
+<input
+type="password"
+id="authPassword"
+placeholder="Enter password"
+>
+
+<button onclick="loginUser()">
+Login
+</button>
+
+<button class="signup" onclick="signupUser()">
+Create Account
+</button>
+
+<div class="auth-status" id="authStatus">
+Not logged in
+</div>
+
+</div>
 
 </section>
 
@@ -411,6 +513,7 @@ onkeyup="searchProducts()"
 
 <div class="products" id="productList">
 
+<!-- DEFAULT PRODUCT -->
 
 <div class="product" data-name="Premium T-Shirt">
 
@@ -435,7 +538,6 @@ Add to Cart
 </button>
 
 </div>
-
 </div>
 
 
@@ -462,7 +564,6 @@ Add to Cart
 </button>
 
 </div>
-
 </div>
 
 
@@ -489,7 +590,6 @@ Add to Cart
 </button>
 
 </div>
-
 </div>
 
 
@@ -516,14 +616,13 @@ Add to Cart
 </button>
 
 </div>
-
 </div>
 
-
 </div>
-
 </section>
 
+
+<!-- SELLER -->
 
 <section class="section" id="seller">
 
@@ -532,20 +631,16 @@ Add to Cart
 <h2>🏪 Sell on Valzo Hub</h2>
 
 <p>
-Have a product? Add it to your Valzo Hub store.
+Login first, then add your product to Valzo Hub.
 </p>
-
 
 <div class="seller-form">
 
 <h3>➕ Add Your Product</h3>
 
-
 <div class="form-group">
 
-<label>
-Seller Name
-</label>
+<label>Seller Name</label>
 
 <input
 type="text"
@@ -558,9 +653,7 @@ placeholder="Enter your name"
 
 <div class="form-group">
 
-<label>
-Product Name
-</label>
+<label>Product Name</label>
 
 <input
 type="text"
@@ -573,9 +666,7 @@ placeholder="Example: Mobile Cover"
 
 <div class="form-group">
 
-<label>
-Product Price ₹
-</label>
+<label>Product Price ₹</label>
 
 <input
 type="number"
@@ -588,9 +679,7 @@ placeholder="Example: 299"
 
 <div class="form-group">
 
-<label>
-Product Image URL
-</label>
+<label>Product Image URL</label>
 
 <input
 type="url"
@@ -603,9 +692,7 @@ placeholder="Paste image link"
 
 <div class="form-group">
 
-<label>
-Product Description
-</label>
+<label>Product Description</label>
 
 <textarea
 id="productDescription"
@@ -624,9 +711,7 @@ onclick="addSellerProduct()">
 </button>
 
 </div>
-
 </div>
-
 </section>
 
 
@@ -659,20 +744,13 @@ onclick="closeCart()">
 
 </div>
 
-
 <div id="cartItems">
-
 <p>Your cart is empty.</p>
-
 </div>
-
 
 <div class="total">
-
 Total: ₹<span id="cartTotal">0</span>
-
 </div>
-
 
 <button
 class="order-btn"
@@ -685,243 +763,456 @@ onclick="orderWhatsApp()">
 </div>
 
 
-<script>
+<!-- FIREBASE -->
 
-let cart=[];
+<script type="module">
 
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-/* ADD TO CART */
-
-function addToCart(name,price){
-
-cart.push({
-name:name,
-price:price
-});
-
-updateCart();
-
-alert(name+" added to cart! 🛒");
-
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
 }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* UPDATE CART */
+const firebaseConfig = {
 
-function updateCart(){
+apiKey:"AIzaSyALKvKM7b1Y-raRK1TdtWSJAuZGKX0RGbU",
 
-document.getElementById("cartCount").innerText=cart.length;
+authDomain:"valzo-hub-d21b4.firebaseapp.com",
 
-const cartItems=document.getElementById("cartItems");
+projectId:"valzo-hub-d21b4",
 
-if(cart.length===0){
+storageBucket:"valzo-hub-d21b4.firebasestorage.app",
 
-cartItems.innerHTML="<p>Your cart is empty.</p>";
+messagingSenderId:"720721563863",
+
+appId:"1:720721563863:web:7cf5b925ad68433e2a2092",
+
+measurementId:"G-GYYCEJKQES"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* GLOBAL USER */
+
+let currentUser = null;
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth,(user)=>{
+
+currentUser=user;
+
+const loginBtn=
+document.getElementById("loginNavBtn");
+
+const logoutBtn=
+document.getElementById("logoutBtn");
+
+const status=
+document.getElementById("authStatus");
+
+
+if(user){
+
+loginBtn.style.display="none";
+
+logoutBtn.style.display="block";
+
+status.innerText=
+"Logged in as: "+user.email;
 
 }else{
 
-cartItems.innerHTML=cart.map((item,index)=>`
+loginBtn.style.display="block";
 
-<div class="cart-item">
+logoutBtn.style.display="none";
 
-<div>
-
-<strong>${item.name}</strong>
-<br>
-₹${item.price}
-
-</div>
-
-<button
-class="remove-btn"
-onclick="removeItem(${index})">
-
-Remove
-
-</button>
-
-</div>
-
-`).join("");
-
-}
-
-
-let total=cart.reduce(
-(sum,item)=>sum+item.price,0
-);
-
-document.getElementById("cartTotal").innerText=total;
-
-}
-
-
-/* REMOVE */
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-updateCart();
-
-}
-
-
-/* OPEN CART */
-
-function openCart(){
-
-document
-.getElementById("cart")
-.classList.add("open");
-
-}
-
-
-/* CLOSE CART */
-
-function closeCart(){
-
-document
-.getElementById("cart")
-.classList.remove("open");
-
-}
-
-
-/* SEARCH */
-
-function searchProducts(){
-
-const search=document
-.getElementById("search")
-.value
-.toLowerCase();
-
-const products=document
-.querySelectorAll(".product");
-
-products.forEach(product=>{
-
-const name=product
-.getAttribute("data-name")
-.toLowerCase();
-
-if(name.includes(search)){
-
-product.style.display="block";
-
-}else{
-
-product.style.display="none";
+status.innerText="Not logged in";
 
 }
 
 });
 
-}
+
+/* SIGN UP */
+
+window.signupUser=async function(){
+
+const email=
+document.getElementById("authEmail").value.trim();
+
+const password=
+document.getElementById("authPassword").value;
 
 
-/* SELLER PRODUCT */
+if(!email || !password){
 
-function addSellerProduct(){
-
-const sellerName=document
-.getElementById("sellerName")
-.value.trim();
-
-const productName=document
-.getElementById("productName")
-.value.trim();
-
-const productPrice=document
-.getElementById("productPrice")
-.value;
-
-const productImage=document
-.getElementById("productImage")
-.value.trim();
-
-const productDescription=document
-.getElementById("productDescription")
-.value.trim();
-
-
-if(
-sellerName==="" ||
-productName==="" ||
-productPrice==="" ||
-productImage===""
-){
-
-alert("Please fill all required fields.");
+alert("Email and password enter karo.");
 
 return;
 
 }
 
 
-const productList=document
-.getElementById("productList");
+if(password.length<6){
+
+alert("Password minimum 6 characters nu hovu joie.");
+
+return;
+
+}
 
 
-const newProduct=document.createElement("div");
+try{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+alert("Account successfully created! 🎉");
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* LOGIN */
+
+window.loginUser=async function(){
+
+const email=
+document.getElementById("authEmail").value.trim();
+
+const password=
+document.getElementById("authPassword").value;
+
+
+if(!email || !password){
+
+alert("Email and password enter karo.");
+
+return;
+
+}
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+alert("Login successful! 🔥");
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* LOGOUT */
+
+window.logout=async function(){
+
+try{
+
+await signOut(auth);
+
+alert("Logout successful.");
+
+}catch(error){
+
+alert(error.message);
+
+}
+
+};
+
+
+/* FIRESTORE PRODUCTS */
+
+async function loadSellerProducts(){
+
+try{
+
+const snapshot=
+await getDocs(
+collection(db,"products")
+);
+
+
+snapshot.forEach((doc)=>{
+
+const data=doc.data();
+
+renderSellerProduct(data);
+
+});
+
+}catch(error){
+
+console.error(
+"Products load error:",
+error
+);
+
+}
+
+}
+
+
+function renderSellerProduct(data){
+
+const productList=
+document.getElementById("productList");
+
+
+const newProduct=
+document.createElement("div");
 
 newProduct.className="product";
 
 newProduct.setAttribute(
 "data-name",
-productName
+data.name
+);
+
+
+const safeName=
+escapeHtml(data.name || "Product");
+
+const safeDescription=
+escapeHtml(
+data.description ||
+"Product available on Valzo Hub."
+);
+
+const safeSeller=
+escapeHtml(
+data.sellerName ||
+"Valzo Seller"
+);
+
+const price=
+Number(data.price)||0;
+
+const image=
+escapeHtml(
+data.image ||
+"https://via.placeholder.com/600x400?text=Valzo+Hub"
 );
 
 
 newProduct.innerHTML=`
 
 <img
-src="${productImage}"
-alt="${productName}"
-onerror="this.src='https://via.placeholder.com/600x400?text=Valzo+Hub+Product'"
+src="${image}"
+alt="${safeName}"
+onerror="this.src='https://via.placeholder.com/600x400?text=Valzo+Hub'"
 >
 
 <div class="product-info">
 
-<h3>${productName}</h3>
+<h3>${safeName}</h3>
 
 <div class="description">
-
-${productDescription || "Product available on Valzo Hub."}
-
+${safeDescription}
 </div>
 
 <div class="price">
-
-₹${Number(productPrice).toLocaleString("en-IN")}
-
+₹${price.toLocaleString("en-IN")}
 </div>
 
 <button
 class="add-btn"
-onclick="addToCart('${escapeQuotes(productName)}',${Number(productPrice)})">
-
+data-product-name="${safeName}"
+data-product-price="${price}">
 Add to Cart
-
 </button>
 
 <p style="margin-top:10px;font-size:12px;color:#777;">
-
-Seller: ${escapeHtml(sellerName)}
-
+Seller: ${safeSeller}
 </p>
 
 </div>
-
 `;
+
+
+const button=
+newProduct.querySelector(".add-btn");
+
+
+button.addEventListener(
+"click",
+()=>{
+
+addToCart(
+data.name,
+price
+);
+
+}
+);
 
 
 productList.appendChild(newProduct);
 
+}
 
-/* SEND SELLER INFO TO WHATSAPP */
+
+/* LOAD PRODUCTS */
+
+loadSellerProducts();
+
+
+/* ADD SELLER PRODUCT */
+
+window.addSellerProduct=async function(){
+
+if(!currentUser){
+
+alert(
+"Product add karva mate pehla Login karo. 🔐"
+);
+
+scrollToAuth();
+
+return;
+
+}
+
+
+const sellerName=
+document.getElementById("sellerName")
+.value.trim();
+
+const productName=
+document.getElementById("productName")
+.value.trim();
+
+const productPrice=
+document.getElementById("productPrice")
+.value;
+
+const productImage=
+document.getElementById("productImage")
+.value.trim();
+
+const productDescription=
+document.getElementById("productDescription")
+.value.trim();
+
+
+if(
+!sellerName ||
+!productName ||
+!productPrice ||
+!productImage
+){
+
+alert(
+"Please fill all required fields."
+);
+
+return;
+
+}
+
+
+const price=
+Number(productPrice);
+
+
+if(price<=0){
+
+alert("Valid product price enter karo.");
+
+return;
+
+}
+
+
+try{
+
+await addDoc(
+collection(db,"products"),
+{
+
+sellerName:sellerName,
+
+productName:productName,
+
+name:productName,
+
+price:price,
+
+image:productImage,
+
+description:productDescription,
+
+sellerId:currentUser.uid,
+
+sellerEmail:currentUser.email,
+
+createdAt:serverTimestamp()
+
+}
+);
+
+
+/* LOCAL DISPLAY */
+
+renderSellerProduct({
+
+sellerName:sellerName,
+
+name:productName,
+
+price:price,
+
+image:productImage,
+
+description:productDescription
+
+});
+
+
+/* WHATSAPP */
 
 const message=
 "Hello Valzo Hub! 👋\n\n"+
@@ -940,26 +1231,43 @@ encodeURIComponent(message),
 );
 
 
+/* CLEAR */
+
 document.getElementById("sellerName").value="";
+
 document.getElementById("productName").value="";
+
 document.getElementById("productPrice").value="";
+
 document.getElementById("productImage").value="";
+
 document.getElementById("productDescription").value="";
 
 
 alert(
-"Product added! 🎉\n\n"+
-"Seller details WhatsApp par pan mokli didhi che."
+"Product Firebase ma save thai gayo! 🎉"
+);
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Product save thai shakyo nahi:\n"+
+error.message
 );
 
 }
 
+};
 
-/* SAFE TEXT */
+
+/* ESCAPE */
 
 function escapeHtml(text){
 
-return text
+return String(text)
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -969,19 +1277,9 @@ return text
 }
 
 
-function escapeQuotes(text){
+/* SCROLL */
 
-return text
-.replace(/\\/g,"\\\\")
-.replace(/'/g,"\\'")
-.replace(/"/g,'\\"');
-
-}
-
-
-/* SELLER SCROLL */
-
-function scrollToSeller(){
+window.scrollToSeller=function(){
 
 document
 .getElementById("seller")
@@ -989,12 +1287,174 @@ document
 behavior:"smooth"
 });
 
+};
+
+
+window.scrollToAuth=function(){
+
+document
+.getElementById("auth")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+};
+
+
+/* CART */
+
+let cart=[];
+
+
+window.addToCart=function(name,price){
+
+cart.push({
+
+name:name,
+
+price:Number(price)
+
+});
+
+updateCart();
+
+alert(
+name+" added to cart! 🛒"
+);
+
+};
+
+
+function updateCart(){
+
+document.getElementById("cartCount")
+.innerText=cart.length;
+
+
+const cartItems=
+document.getElementById("cartItems");
+
+
+if(cart.length===0){
+
+cartItems.innerHTML=
+"<p>Your cart is empty.</p>";
+
+}else{
+
+cartItems.innerHTML=
+cart.map((item,index)=>`
+
+<div class="cart-item">
+
+<div>
+
+<strong>
+${escapeHtml(item.name)}
+</strong>
+
+<br>
+
+₹${item.price.toLocaleString("en-IN")}
+
+</div>
+
+<button
+class="remove-btn"
+onclick="removeItem(${index})">
+
+Remove
+
+</button>
+
+</div>
+
+`).join("");
+
 }
+
+
+const total=
+cart.reduce(
+(sum,item)=>sum+item.price,
+0
+);
+
+
+document.getElementById("cartTotal")
+.innerText=
+total.toLocaleString("en-IN");
+
+}
+
+
+window.removeItem=function(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+};
+
+
+window.openCart=function(){
+
+document
+.getElementById("cart")
+.classList.add("open");
+
+};
+
+
+window.closeCart=function(){
+
+document
+.getElementById("cart")
+.classList.remove("open");
+
+};
+
+
+/* SEARCH */
+
+window.searchProducts=function(){
+
+const search=
+document.getElementById("search")
+.value
+.toLowerCase();
+
+
+const products=
+document.querySelectorAll(".product");
+
+
+products.forEach(product=>{
+
+const name=
+product
+.getAttribute("data-name")
+.toLowerCase();
+
+
+if(name.includes(search)){
+
+product.style.display="block";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+};
 
 
 /* WHATSAPP ORDER */
 
-function orderWhatsApp(){
+window.orderWhatsApp=function(){
 
 if(cart.length===0){
 
@@ -1022,15 +1482,18 @@ item.price+
 });
 
 
-let total=cart.reduce(
-(sum,item)=>sum+item.price,0
+const total=
+cart.reduce(
+(sum,item)=>sum+item.price,
+0
 );
 
 
 message+=
 "\nTotal: ₹"+
 total+
-"\n\nPlease confirm my order. 😊";
+"\n\n"+
+"Please confirm my order. 😊";
 
 
 window.open(
@@ -1039,10 +1502,10 @@ encodeURIComponent(message),
 "_blank"
 );
 
-}
+};
+
 
 </script>
 
 </body>
 </html>
-```
