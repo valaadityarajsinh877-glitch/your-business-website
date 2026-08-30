@@ -3,566 +3,507 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>Valzo Hub — Shop • Sell • Discover</title>
-<meta name="description" content="Valzo Hub — Shop, sell and discover amazing products.">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-color:#111;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f6f8;
+  color:#111;
+  padding-bottom:78px;
 }
 button,input,textarea{font:inherit}
 button{cursor:pointer}
+a{text-decoration:none;color:inherit}
 
 :root{
---black:#070707;
---gold:#ffd43b;
---green:#16c765;
---muted:#777;
+  --black:#080808;
+  --gold:#ffd21f;
+  --green:#19b965;
+  --blue:#1467ff;
+  --red:#e53935;
+  --gray:#707070;
+  --card:#fff;
 }
 
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(7,7,7,.96);
-border-bottom:1px solid #222;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#080808;
+  color:white;
+  box-shadow:0 3px 18px #0002;
 }
 
 .nav{
-max-width:1200px;
-margin:auto;
-padding:14px 18px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
+  max-width:1250px;
+  margin:auto;
+  padding:13px 16px;
+  display:flex;
+  align-items:center;
+  gap:15px;
 }
 
 .logo{
-color:#fff;
-font-size:25px;
-font-weight:900;
+  font-size:25px;
+  font-weight:900;
+  white-space:nowrap;
 }
 .logo span{color:var(--gold)}
 
-.nav-actions{
-display:flex;
-gap:7px;
-align-items:center;
+.search{
+  flex:1;
+  display:flex;
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+}
+.search input{
+  width:100%;
+  border:0;
+  outline:0;
+  padding:12px;
+}
+.search button{
+  border:0;
+  background:var(--gold);
+  padding:0 18px;
+  font-weight:900;
 }
 
-.nav-btn{
-border:0;
-border-radius:30px;
-padding:10px 14px;
-font-weight:800;
+.nav-right{
+  display:flex;
+  gap:7px;
 }
-
-.login-btn{background:#fff}
-.logout-btn{background:#292929;color:#fff}
-.sell-btn{background:var(--green);color:#fff}
-.cart-btn{background:var(--gold)}
+.nav-right button{
+  border:0;
+  border-radius:9px;
+  padding:10px 12px;
+  font-weight:800;
+}
+.cartTop{background:var(--gold)}
+.sellTop{background:var(--green);color:white}
 
 .hero{
-min-height:540px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:70px 18px;
-color:#fff;
-background:
-radial-gradient(circle at 20% 20%,rgba(255,212,59,.18),transparent 30%),
-radial-gradient(circle at 80% 80%,rgba(22,199,101,.12),transparent 30%),
-linear-gradient(135deg,#050505,#191919,#050505);
-}
-
-.hero-content{max-width:800px}
-
-.badge{
-display:inline-block;
-padding:8px 14px;
-border-radius:30px;
-color:var(--gold);
-border:1px solid rgba(255,212,59,.4);
-margin-bottom:18px;
-font-size:13px;
-font-weight:800;
+  background:
+  radial-gradient(circle at 15% 20%,#ffd21f33,transparent 30%),
+  radial-gradient(circle at 85% 80%,#19b96522,transparent 30%),
+  linear-gradient(135deg,#050505,#191919);
+  color:white;
+  padding:75px 18px;
+  text-align:center;
 }
 
 .hero h1{
-font-size:clamp(42px,8vw,78px);
-line-height:1;
-letter-spacing:-4px;
-margin-bottom:20px;
+  font-size:clamp(42px,8vw,78px);
+  letter-spacing:-4px;
 }
-
 .hero h1 span{color:var(--gold)}
-
 .hero p{
-color:#ccc;
-font-size:18px;
-line-height:1.6;
-max-width:650px;
-margin:0 auto 28px;
+  max-width:680px;
+  margin:18px auto 25px;
+  color:#ccc;
+  line-height:1.6;
 }
-
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
-
-.primary-btn,.secondary-btn{
-border:0;
-padding:14px 22px;
-border-radius:30px;
-font-weight:900;
+.hero-actions button{
+  border:0;
+  padding:14px 22px;
+  border-radius:30px;
+  font-weight:900;
 }
-
-.primary-btn{
-background:var(--gold);
-color:#111;
-}
-
-.secondary-btn{
-background:#292929;
-color:#fff;
-border:1px solid #444;
-}
-
-.search-wrap{
-max-width:800px;
-margin:-28px auto 0;
-padding:0 18px;
-position:relative;
-z-index:5;
-}
-
-.search{
-background:#fff;
-padding:6px;
-border-radius:16px;
-display:flex;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-.search input{
-width:100%;
-border:0;
-outline:0;
-padding:14px;
-}
-
-.search button{
-border:0;
-background:#111;
-color:#fff;
-padding:0 18px;
-border-radius:12px;
-font-weight:800;
-}
+.explore{background:var(--gold)}
+.start{background:#292929;color:white}
 
 .section{
-max-width:1200px;
-margin:auto;
-padding:60px 18px;
+  max-width:1250px;
+  margin:auto;
+  padding:45px 16px;
+}
+.title{
+  margin-bottom:22px;
+}
+.title h2{font-size:30px}
+.title p{color:var(--gray);margin-top:5px}
+
+.category-row{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  padding-bottom:10px;
+}
+.category{
+  background:white;
+  border:1px solid #ddd;
+  border-radius:30px;
+  padding:10px 17px;
+  white-space:nowrap;
+  font-weight:800;
 }
 
-.section-title{margin-bottom:25px}
-.section-title h2{font-size:32px}
-.section-title p{color:var(--muted);margin-top:5px}
-
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
 }
 
 .product{
-background:#fff;
-border:1px solid #e8e8e8;
-border-radius:20px;
-overflow:hidden;
-transition:.25s;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #e5e5e5;
+  transition:.2s;
 }
-
 .product:hover{
-transform:translateY(-5px);
-box-shadow:0 15px 35px rgba(0,0,0,.1);
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px #0001;
 }
 
 .product-image{
-height:230px;
-background:#eee;
-position:relative;
+  height:230px;
+  background:#eee;
+  position:relative;
 }
-
 .product-image img{
-width:100%;
-height:100%;
-object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.badge{
+  position:absolute;
+  left:10px;
+  top:10px;
+  background:var(--gold);
+  padding:6px 9px;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:900;
+}
+.heart{
+  position:absolute;
+  right:10px;
+  top:10px;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:white;
+  font-size:19px;
 }
 
-.product-badge{
-position:absolute;
-top:12px;
-left:12px;
-background:var(--gold);
-padding:6px 9px;
-border-radius:8px;
-font-size:11px;
-font-weight:900;
+.product-info{padding:15px}
+.product-info h3{margin-bottom:7px}
+.desc{
+  color:#777;
+  font-size:13px;
+  min-height:38px;
+  line-height:1.45;
 }
-
-.wishlist{
-position:absolute;
-right:12px;
-top:12px;
-width:38px;
-height:38px;
-border:0;
-border-radius:50%;
-background:#fff;
-font-size:18px;
-}
-
-.product-info{padding:16px}
-
-.product-info h3{
-font-size:18px;
-margin-bottom:7px;
-}
-
-.description{
-color:#777;
-font-size:13px;
-line-height:1.5;
-min-height:38px;
-}
-
 .product-bottom{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-top:14px;
-gap:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:13px;
 }
-
 .price{
-font-size:20px;
-font-weight:900;
+  font-size:20px;
+  font-weight:900;
+}
+.add{
+  background:#111;
+  color:white;
+  border:0;
+  border-radius:9px;
+  padding:10px 13px;
+  font-weight:800;
 }
 
-.add-btn{
-border:0;
-background:#111;
-color:#fff;
-padding:10px 13px;
-border-radius:10px;
-font-weight:800;
+.panel{
+  background:white;
+  border-radius:18px;
+  border:1px solid #e3e3e3;
+  padding:22px;
 }
 
-.auth-box,.dashboard{
-max-width:650px;
-margin:auto;
-background:#fff;
-padding:25px;
-border-radius:20px;
-border:1px solid #e5e5e5;
+.auth{
+  max-width:600px;
+  margin:auto;
 }
-
-.auth-box h2,.dashboard h2{
-text-align:center;
-margin-bottom:18px;
+.auth input,
+.form input,
+.form textarea{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:10px;
+  padding:13px;
+  margin:6px 0;
+  outline:0;
 }
-
-.auth-box input{
-width:100%;
-padding:13px;
-margin:6px 0;
-border:1px solid #ddd;
-border-radius:10px;
-outline:0;
+.form textarea{min-height:100px}
+.auth-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px;
 }
-
-.auth-buttons{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
+.auth-actions button{
+  border:0;
+  padding:13px;
+  border-radius:10px;
+  background:#111;
+  color:white;
+  font-weight:900;
 }
-
-.auth-buttons button{
-border:0;
-padding:13px;
-border-radius:10px;
-background:#111;
-color:#fff;
-font-weight:900;
+.auth-actions button:last-child{
+  background:var(--green);
 }
-
-.auth-buttons button:last-child{
-background:var(--green);
-}
-
-.forgot{
-display:block;
-margin:12px auto 0;
-border:0;
-background:none;
-color:#1769ff;
-font-size:13px;
-font-weight:700;
-}
-
 .status{
-text-align:center;
-color:#777;
-font-size:13px;
-margin-top:12px;
+  text-align:center;
+  margin-top:12px;
+  color:#777;
+  font-size:13px;
 }
 
-.dashboard{display:none}
+.account-box{
+  max-width:850px;
+  margin:auto;
+}
+.account-head{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:20px;
+}
+.avatar{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:#111;
+  color:var(--gold);
+  display:grid;
+  place-items:center;
+  font-size:25px;
+}
+.account-list{
+  display:grid;
+  gap:8px;
+}
+.account-item{
+  background:white;
+  border:1px solid #e5e5e5;
+  border-radius:12px;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:800;
+}
+.account-item small{
+  color:#999;
+  font-weight:normal;
+}
+
+.dashboard{
+  display:none;
+}
 .dashboard.show{display:block}
 
 .my-product{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-padding:14px 0;
-border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  padding:14px 0;
 }
-
 .delete{
-border:0;
-background:#ff4444;
-color:#fff;
-padding:8px 11px;
-border-radius:8px;
-font-weight:800;
+  border:0;
+  background:var(--red);
+  color:white;
+  padding:8px 11px;
+  border-radius:8px;
+  font-weight:800;
 }
 
-.seller-area{
-background:linear-gradient(145deg,#070707,#191919);
-border-radius:28px;
-padding:40px 18px;
-color:#fff;
+.seller{
+  background:linear-gradient(135deg,#070707,#202020);
+  color:white;
+  border-radius:25px;
 }
-
-.seller-area h2{text-align:center}
-.seller-area>p{
-text-align:center;
-color:#aaa;
-margin:8px 0 22px;
+.seller .form{
+  max-width:650px;
+  margin:auto;
+  background:white;
+  color:#111;
+  padding:20px;
+  border-radius:18px;
 }
-
-.form{
-max-width:650px;
-margin:auto;
-background:#fff;
-color:#111;
-padding:22px;
-border-radius:20px;
-}
-
 .form label{
-display:block;
-font-size:13px;
-font-weight:800;
-margin:12px 0 6px;
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  margin-top:10px;
+}
+.publish{
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:var(--green);
+  color:white;
+  font-weight:900;
 }
 
-.form input,.form textarea{
-width:100%;
-padding:13px;
-border:1px solid #ddd;
-border-radius:10px;
-outline:0;
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.info-card{
+  background:white;
+  padding:22px;
+  border-radius:17px;
+  border:1px solid #e5e5e5;
+}
+.info-card b{
+  display:block;
+  font-size:24px;
+  margin-top:8px;
 }
 
-.form textarea{
-min-height:100px;
-resize:vertical;
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:1500;
+  height:70px;
+  background:white;
+  border-top:1px solid #ddd;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
 }
-
-.submit{
-width:100%;
-border:0;
-margin-top:15px;
-padding:14px;
-border-radius:11px;
-background:var(--green);
-color:#fff;
-font-weight:900;
+.bottom-nav button{
+  border:0;
+  background:none;
+  color:#666;
+  font-size:11px;
+  font-weight:800;
+}
+.bottom-nav button.active{color:#111}
+.bottom-nav .icon{
+  display:block;
+  font-size:22px;
+  margin-bottom:3px;
 }
 
 .cart{
-position:fixed;
-right:-430px;
-top:0;
-width:390px;
-max-width:92%;
-height:100%;
-background:#fff;
-z-index:2000;
-padding:22px;
-box-shadow:-15px 0 45px rgba(0,0,0,.2);
-transition:.3s;
-overflow:auto;
+  position:fixed;
+  top:0;
+  right:-430px;
+  width:400px;
+  max-width:92%;
+  height:100%;
+  background:white;
+  z-index:2500;
+  padding:22px;
+  box-shadow:-15px 0 40px #0003;
+  transition:.3s;
+  overflow:auto;
 }
-
 .cart.open{right:0}
-
 .cart-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-
 .close{
-width:38px;
-height:38px;
-border:0;
-border-radius:50%;
-background:#eee;
-font-size:20px;
+  border:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
 }
-
 .cart-item{
-display:flex;
-justify-content:space-between;
-gap:10px;
-padding:14px 0;
-border-bottom:1px solid #eee;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+  display:flex;
+  justify-content:space-between;
 }
-
 .remove{
-border:0;
-background:#ff4444;
-color:#fff;
-padding:6px 9px;
-border-radius:7px;
+  background:var(--red);
+  color:white;
+  border:0;
+  padding:6px 9px;
+  border-radius:7px;
 }
-
 .total{
-font-size:22px;
-font-weight:900;
-margin:22px 0;
+  font-size:22px;
+  font-weight:900;
+  margin:22px 0;
 }
-
 .order{
-width:100%;
-border:0;
-padding:14px;
-border-radius:12px;
-background:var(--green);
-color:#fff;
-font-weight:900;
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:10px;
+  background:var(--green);
+  color:white;
+  font-weight:900;
 }
 
-.empty{
-text-align:center;
-padding:20px;
-color:#888;
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:88px;
+  transform:translateX(-50%) translateY(20px);
+  opacity:0;
+  background:#111;
+  color:white;
+  padding:13px 18px;
+  border-radius:12px;
+  z-index:4000;
+  transition:.25s;
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
 footer{
-background:#080808;
-color:#888;
-text-align:center;
-padding:35px 18px;
-line-height:2;
+  background:#080808;
+  color:#888;
+  padding:35px 15px;
+  text-align:center;
+  line-height:2;
 }
 
-footer strong{color:#fff}
-
-.toast{
-position:fixed;
-bottom:22px;
-left:50%;
-transform:translateX(-50%) translateY(20px);
-opacity:0;
-pointer-events:none;
-background:#111;
-color:#fff;
-padding:13px 18px;
-border-radius:12px;
-z-index:3000;
-transition:.25s;
-max-width:90%;
-text-align:center;
-}
-
-.toast.show{
-opacity:1;
-transform:translateX(-50%) translateY(0);
-}
-
-@media(max-width:650px){
-
-.nav{padding:12px}
-.logo{font-size:21px}
-
-.nav-btn{
-padding:8px 10px;
-font-size:11px;
-}
-
-.hero{
-min-height:500px;
-}
-
-.hero h1{
-letter-spacing:-2px;
-}
-
-.hero p{
-font-size:16px;
-}
-
-.products{
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:12px;
-}
-
-.product-image{
-height:175px;
-}
-
-.product-info{
-padding:12px;
-}
-
-.product-info h3{
-font-size:15px;
-}
-
-.price{
-font-size:17px;
-}
-
-.add-btn{
-font-size:11px;
-padding:9px;
-}
-
-.auth-buttons{
-grid-template-columns:1fr;
-}
-
+@media(max-width:700px){
+  .nav{flex-wrap:wrap}
+  .search{order:3;flex-basis:100%}
+  .nav-right button{padding:8px;font-size:11px}
+  .hero h1{letter-spacing:-2px}
+  .products{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .product-image{height:175px}
+  .product-info{padding:11px}
+  .product-info h3{font-size:15px}
+  .price{font-size:17px}
+  .add{font-size:11px;padding:8px}
+  .info-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:390px){
-.products{grid-template-columns:1fr}
+  .products{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -572,137 +513,79 @@ grid-template-columns:1fr;
 <header>
 <div class="nav">
 
-<div class="logo">
-Valzo <span>Hub</span>
+<div class="logo">Valzo <span>Hub</span></div>
+
+<div class="search">
+<input id="search" placeholder="Search products..." oninput="searchProducts()">
+<button onclick="searchProducts()">Search</button>
 </div>
 
-<div class="nav-actions">
-
-<button class="nav-btn login-btn"
-id="loginNav"
-onclick="scrollAuth()">
-🔐 Login
-</button>
-
-<button class="nav-btn logout-btn"
-id="logoutNav"
-onclick="logout()"
-style="display:none">
-Logout
-</button>
-
-<button class="nav-btn sell-btn"
-onclick="scrollSeller()">
-🏪 Sell
-</button>
-
-<button class="nav-btn cart-btn"
-onclick="openCart()">
-🛒 <span id="cartCount">0</span>
-</button>
-
+<div class="nav-right">
+<button class="sellTop" onclick="go('seller')">🏪 Sell</button>
+<button class="cartTop" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
 </div>
+
 </div>
 </header>
 
 
-<section class="hero">
+<!-- HOME -->
 
-<div class="hero-content">
+<section id="home" class="hero">
 
-<div class="badge">
-✦ THE NEW WAY TO SHOP & SELL
-</div>
-
-<h1>
-Welcome to <span>Valzo Hub</span>
-</h1>
+<h1>Welcome to <span>Valzo Hub</span></h1>
 
 <p>
-Discover products. Support sellers. Build your store.
-Everything you need, all in one beautiful place.
+Shop products, discover sellers, manage orders, wallet and payments —
+all in one premium marketplace.
 </p>
 
-<div class="hero-buttons">
-
-<button class="primary-btn"
-onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-🛍️ Explore Products
-</button>
-
-<button class="secondary-btn"
-onclick="scrollSeller()">
-🏪 Start Selling
-</button>
-
+<div class="hero-actions">
+<button class="explore" onclick="go('shop')">🛍️ Explore Products</button>
+<button class="start" onclick="go('seller')">🏪 Start Selling</button>
 </div>
 
-</div>
 </section>
 
 
-<div class="search-wrap">
+<!-- SHOP -->
 
-<div class="search">
+<section id="shop" class="section">
 
-<input
-id="search"
-type="text"
-placeholder="🔎 Search products..."
-oninput="searchProducts()">
-
-<button onclick="searchProducts()">
-Search
-</button>
-
-</div>
+<div class="title">
+<h2>🛍️ Shop</h2>
+<p>Discover trending products from Valzo Hub sellers.</p>
 </div>
 
-
-<section class="section" id="products">
-
-<div class="section-title">
-<h2>🔥 Trending Products</h2>
-<p>Hand-picked products for your everyday style.</p>
+<div class="category-row">
+<button class="category" onclick="filterCategory('all')">All</button>
+<button class="category" onclick="filterCategory('fashion')">👕 Fashion</button>
+<button class="category" onclick="filterCategory('shoes')">👟 Shoes</button>
+<button class="category" onclick="filterCategory('electronics')">⌚ Electronics</button>
+<button class="category" onclick="filterCategory('bags')">🎒 Bags</button>
 </div>
+
+<br>
 
 <div class="products" id="productList">
-
 
 <div class="product" data-name="Premium T-Shirt">
 
 <div class="product-image">
+<span class="badge">TRENDING</span>
+<button class="heart" onclick="wish(this)">♡</button>
 
-<span class="product-badge">TRENDING</span>
-
-<button class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
-
-<img
-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
-alt="Premium T-Shirt">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85">
 
 </div>
 
 <div class="product-info">
-
 <h3>Premium T-Shirt</h3>
-
-<div class="description">
-Comfortable premium quality T-shirt.
-</div>
+<div class="desc">Comfortable premium quality T-shirt.</div>
 
 <div class="product-bottom">
-
 <div class="price">₹499</div>
-
-<button class="add-btn"
-onclick="addToCart('Premium T-Shirt',499)">
-Add +
-</button>
-
+<button class="add" onclick="addCart('Premium T-Shirt',499)">Add +</button>
 </div>
 </div>
 </div>
@@ -711,37 +594,20 @@ Add +
 <div class="product" data-name="Stylish Sneakers">
 
 <div class="product-image">
+<span class="badge">HOT</span>
+<button class="heart" onclick="wish(this)">♡</button>
 
-<span class="product-badge">HOT</span>
-
-<button class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
-
-<img
-src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
-alt="Stylish Sneakers">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85">
 
 </div>
 
 <div class="product-info">
-
 <h3>Stylish Sneakers</h3>
-
-<div class="description">
-Trendy sneakers for everyday style.
-</div>
+<div class="desc">Trendy sneakers for everyday style.</div>
 
 <div class="product-bottom">
-
 <div class="price">₹1,499</div>
-
-<button class="add-btn"
-onclick="addToCart('Stylish Sneakers',1499)">
-Add +
-</button>
-
+<button class="add" onclick="addCart('Stylish Sneakers',1499)">Add +</button>
 </div>
 </div>
 </div>
@@ -750,37 +616,20 @@ Add +
 <div class="product" data-name="Smart Watch">
 
 <div class="product-image">
+<span class="badge">NEW</span>
+<button class="heart" onclick="wish(this)">♡</button>
 
-<span class="product-badge">NEW</span>
-
-<button class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
-
-<img
-src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
-alt="Smart Watch">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85">
 
 </div>
 
 <div class="product-info">
-
 <h3>Smart Watch</h3>
-
-<div class="description">
-Smart and stylish watch for daily use.
-</div>
+<div class="desc">Smart and stylish watch for daily use.</div>
 
 <div class="product-bottom">
-
 <div class="price">₹1,999</div>
-
-<button class="add-btn"
-onclick="addToCart('Smart Watch',1999)">
-Add +
-</button>
-
+<button class="add" onclick="addCart('Smart Watch',1999)">Add +</button>
 </div>
 </div>
 </div>
@@ -789,37 +638,20 @@ Add +
 <div class="product" data-name="Premium Backpack">
 
 <div class="product-image">
+<span class="badge">POPULAR</span>
+<button class="heart" onclick="wish(this)">♡</button>
 
-<span class="product-badge">POPULAR</span>
-
-<button class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
-
-<img
-src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85"
-alt="Premium Backpack">
+<img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85">
 
 </div>
 
 <div class="product-info">
-
 <h3>Premium Backpack</h3>
-
-<div class="description">
-Strong and stylish backpack.
-</div>
+<div class="desc">Strong and stylish backpack.</div>
 
 <div class="product-bottom">
-
 <div class="price">₹899</div>
-
-<button class="add-btn"
-onclick="addToCart('Premium Backpack',899)">
-Add +
-</button>
-
+<button class="add" onclick="addCart('Premium Backpack',899)">Add +</button>
 </div>
 </div>
 </div>
@@ -828,35 +660,304 @@ Add +
 </section>
 
 
-<section class="section" id="auth">
+<!-- ORDERS -->
 
-<div class="auth-box">
+<section id="orders" class="section">
 
-<h2>🔐 Your Valzo Account</h2>
+<div class="title">
+<h2>📦 My Orders</h2>
+<p>Track and manage your purchases.</p>
+</div>
 
-<input
-id="authEmail"
-type="email"
-placeholder="Email address">
+<div class="info-grid">
 
-<input
-id="authPassword"
-type="password"
-placeholder="Password — minimum 6 characters">
+<div class="info-card">
+📦 Total Orders
+<b id="orderCount">0</b>
+</div>
 
-<div class="auth-buttons">
+<div class="info-card">
+🚚 Pending
+<b>0</b>
+</div>
 
-<button onclick="loginUser()">
-Login
-</button>
+<div class="info-card">
+✅ Delivered
+<b>0</b>
+</div>
 
-<button onclick="signupUser()">
-Create Account
+</div>
+
+<br>
+
+<div class="panel" id="ordersPanel">
+<div class="empty">Your orders will appear here.</div>
+</div>
+
+</section>
+
+
+<!-- BUY AGAIN -->
+
+<section id="buyagain" class="section">
+
+<div class="title">
+<h2>🔁 Buy Again</h2>
+<p>Quickly reorder products you bought before.</p>
+</div>
+
+<div class="panel">
+
+<p style="color:#777">
+Your previous purchases will appear here after ordering.
+</p>
+
+<br>
+
+<button class="explore"
+style="border:0;padding:12px 18px;border-radius:10px;font-weight:800"
+onclick="go('shop')">
+🛍️ Continue Shopping
 </button>
 
 </div>
 
-<button class="forgot" onclick="forgotPassword()">
+</section>
+
+
+<!-- PAYMENTS -->
+
+<section id="payments" class="section">
+
+<div class="title">
+<h2>💳 Payments</h2>
+<p>Manage your payment information.</p>
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+💳 Payment Methods
+<b>0</b>
+</div>
+
+<div class="info-card">
+🧾 Transactions
+<b>0</b>
+</div>
+
+<div class="info-card">
+🔒 Secure
+<b>100%</b>
+</div>
+
+</div>
+
+<br>
+
+<div class="panel">
+<strong>Payment Methods</strong>
+<p style="color:#777;margin-top:8px">
+No payment method added yet.
+</p>
+
+<button style="margin-top:15px;border:0;background:#111;color:white;padding:12px 17px;border-radius:9px">
+➕ Add Payment Method
+</button>
+</div>
+
+</section>
+
+
+<!-- WALLET -->
+
+<section id="wallet" class="section">
+
+<div class="title">
+<h2>👛 Valzo Wallet</h2>
+<p>Manage your wallet balance and transactions.</p>
+</div>
+
+<div class="panel" style="background:#111;color:white">
+
+<p style="color:#aaa">Wallet Balance</p>
+
+<h1 style="font-size:38px;margin:8px 0">
+₹<span id="walletBalance">0</span>
+</h1>
+
+<button
+onclick="toast('Wallet top-up feature will be connected with payment gateway.')"
+style="border:0;background:var(--gold);padding:12px 18px;border-radius:10px;font-weight:900">
+➕ Add Money
+</button>
+
+</div>
+
+<br>
+
+<div class="panel">
+<strong>Wallet Transactions</strong>
+<p style="color:#777;margin-top:8px">
+No transactions yet.
+</p>
+</div>
+
+</section>
+
+
+<!-- WISHLIST -->
+
+<section id="wishlist" class="section">
+
+<div class="title">
+<h2>❤️ Wishlist</h2>
+<p>Your saved products.</p>
+</div>
+
+<div class="panel">
+<p style="color:#777">
+Tap ♡ on a product to save it to your wishlist.
+</p>
+</div>
+
+</section>
+
+
+<!-- CUSTOMER SERVICE -->
+
+<section id="service" class="section">
+
+<div class="title">
+<h2>🎧 Customer Service</h2>
+<p>We are here to help.</p>
+</div>
+
+<div class="account-list">
+
+<div class="account-item" onclick="toast('Order Help selected')">
+<span>📦 Order Help</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="toast('Payment Help selected')">
+<span>💳 Payment Help</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="toast('Return & Refund selected')">
+<span>↩️ Return & Refund</span>
+<span>›</span>
+</div>
+
+<a class="account-item" href="https://wa.me/917016006504?text=Hello%20Valzo%20Hub%20Customer%20Service">
+<span>💬 WhatsApp Support</span>
+<span>›</span>
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+
+<section id="account" class="section">
+
+<div class="title">
+<h2>👤 Account</h2>
+</div>
+
+<div class="account-box">
+
+<div class="account-head">
+
+<div class="avatar">👤</div>
+
+<div>
+<h3 id="accountName">Guest User</h3>
+<p id="accountEmail" style="color:#777">
+Login to manage your account
+</p>
+</div>
+
+</div>
+
+<div class="account-list">
+
+<div class="account-item" onclick="go('orders')">
+<span>📦 My Orders</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('buyagain')">
+<span>🔁 Buy Again</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('payments')">
+<span>💳 Payments</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('wallet')">
+<span>👛 Wallet</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('wishlist')">
+<span>❤️ Wishlist</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('service')">
+<span>🎧 Customer Service</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="go('seller')">
+<span>🏪 Sell on Valzo Hub</span>
+<span>›</span>
+</div>
+
+<div class="account-item" onclick="logoutUser()">
+<span>🚪 Logout</span>
+<span>›</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section id="login" class="section">
+
+<div class="panel auth">
+
+<div class="title">
+<h2>🔐 Valzo Account</h2>
+<p>Login or create your account.</p>
+</div>
+
+<input id="email" type="email" placeholder="Email address">
+
+<input id="password" type="password" placeholder="Password">
+
+<div class="auth-actions">
+
+<button onclick="loginUser()">Login</button>
+
+<button onclick="signupUser()">Create Account</button>
+
+</div>
+
+<button
+onclick="resetPassword()"
+style="display:block;margin:13px auto;border:0;background:none;color:#1467ff;font-weight:800">
 🔑 Forgot Password?
 </button>
 
@@ -865,117 +966,117 @@ Not logged in
 </div>
 
 </div>
+
 </section>
 
 
-<section class="section">
+<!-- SELLER -->
 
-<div class="dashboard" id="dashboard">
+<section id="seller" class="section">
 
-<h2>🏪 My Seller Dashboard</h2>
+<div class="seller">
 
-<p
-id="dashboardUser"
-style="text-align:center;color:#777;margin-bottom:15px">
-</p>
-
-<div id="myProducts">
-<div class="empty">
-No products yet.
-</div>
-</div>
-
-</div>
-</section>
-
-
-<section class="section" id="seller">
-
-<div class="seller-area">
-
-<h2>🏪 Sell on Valzo Hub</h2>
-
-<p>
+<div class="title" style="text-align:center">
+<h2 style="color:white">🏪 Sell on Valzo Hub</h2>
+<p style="color:#aaa">
 Create your product listing and reach customers.
 </p>
+</div>
 
 <div class="form">
 
 <label>Seller Name</label>
-
-<input
-id="sellerName"
-placeholder="Your name">
+<input id="sellerName" placeholder="Your name">
 
 <label>Product Name</label>
-
-<input
-id="productName"
-placeholder="Example: Mobile Cover">
+<input id="productName" placeholder="Example: Puma Unisex Adult Geo Slide">
 
 <label>Product Price ₹</label>
-
-<input
-id="productPrice"
-type="number"
-min="1"
-placeholder="299">
+<input id="productPrice" type="number" placeholder="899">
 
 <label>Product Image URL</label>
-
-<input
-id="productImage"
-type="url"
-placeholder="https://...">
+<input id="productImage" placeholder="https://...jpg">
 
 <label>Product Description</label>
+<textarea id="productDescription"
+placeholder="Stylish and comfortable product description"></textarea>
 
-<textarea
-id="productDescription"
-placeholder="Tell customers about your product..."></textarea>
-
-<button
-class="submit"
-id="publishBtn"
-onclick="addSellerProduct()">
+<button class="publish" id="publishBtn" onclick="publishProduct()">
 ➕ Publish Product
 </button>
 
 </div>
 </div>
+
+</section>
+
+
+<!-- SELLER DASHBOARD -->
+
+<section class="section">
+
+<div id="dashboard" class="dashboard panel">
+
+<div class="title">
+<h2>📊 My Seller Dashboard</h2>
+<p id="sellerEmail"></p>
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+📦 Products
+<b id="sellerProductCount">0</b>
+</div>
+
+<div class="info-card">
+🧾 Orders
+<b>0</b>
+</div>
+
+<div class="info-card">
+💰 Earnings
+<b>₹0</b>
+</div>
+
+</div>
+
+<br>
+
+<h3>My Products</h3>
+
+<div id="myProducts">
+<div style="color:#777;padding:20px 0">
+No products yet.
+</div>
+</div>
+
+</div>
+
 </section>
 
 
 <footer>
-
-<p>
-<strong>Valzo Hub</strong> — Shop • Sell • Discover
-</p>
-
-<p>
-© 2026 Valzo Hub. All Rights Reserved.
-</p>
-
-<p>
+<strong style="color:white">Valzo Hub</strong><br>
+Shop • Sell • Discover<br>
+© 2026 Valzo Hub. All Rights Reserved.<br>
 Contact: Aadi | WhatsApp: 7016006504
-</p>
-
 </footer>
 
 
-<div class="cart" id="cart">
+<!-- CART -->
+
+<div id="cart" class="cart">
 
 <div class="cart-head">
-
 <h2>🛒 Your Cart</h2>
-
-<button class="close"
-onclick="closeCart()">×</button>
-
+<button class="close" onclick="closeCart()">×</button>
 </div>
 
+<hr style="border:0;border-top:1px solid #eee;margin:15px 0">
+
 <div id="cartItems">
-<div class="empty">
+<div style="text-align:center;color:#888;padding:20px">
 Your cart is empty.
 </div>
 </div>
@@ -984,15 +1085,46 @@ Your cart is empty.
 Total: ₹<span id="cartTotal">0</span>
 </div>
 
-<button class="order"
-onclick="orderWhatsApp()">
+<button class="order" onclick="orderWhatsApp()">
 💬 Order on WhatsApp
 </button>
 
 </div>
 
 
-<div class="toast" id="toast"></div>
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<button onclick="go('home')" class="active">
+<span class="icon">🏠</span>
+Home
+</button>
+
+<button onclick="go('shop')">
+<span class="icon">🛍️</span>
+Shop
+</button>
+
+<button onclick="go('orders')">
+<span class="icon">📦</span>
+Orders
+</button>
+
+<button onclick="openCart()">
+<span class="icon">🛒</span>
+Cart
+</button>
+
+<button onclick="go('account')">
+<span class="icon">👤</span>
+Account
+</button>
+
+</nav>
+
+
+<div id="toast" class="toast"></div>
 
 
 <script type="module">
@@ -1046,114 +1178,110 @@ measurementId:"G-GYYCEJKQES"
 
 
 const app=initializeApp(firebaseConfig);
-
 const auth=getAuth(app);
-
 const db=getFirestore(app);
 
 let currentUser=null;
-
 let cart=[];
+
+
+/* NAVIGATION */
+
+window.go=function(id){
+
+const el=document.getElementById(id);
+
+if(el){
+el.scrollIntoView({behavior:"smooth"});
+}
+
+};
 
 
 /* TOAST */
 
-function toast(text){
+function toast(message){
 
 const el=document.getElementById("toast");
 
-el.innerText=text;
-
+el.innerText=message;
 el.classList.add("show");
 
 setTimeout(()=>{
 el.classList.remove("show");
-},3000);
+},2800);
 
 }
 
+window.toast=toast;
 
-/* AUTH STATE */
+
+/* AUTH */
 
 onAuthStateChanged(auth,async(user)=>{
 
 currentUser=user;
 
-const loginNav=document.getElementById("loginNav");
-
-const logoutNav=document.getElementById("logoutNav");
-
-const dashboard=document.getElementById("dashboard");
-
 if(user){
-
-loginNav.style.display="none";
-
-logoutNav.style.display="block";
 
 document.getElementById("authStatus").innerText=
 "Logged in as "+user.email;
 
-dashboard.classList.add("show");
-
-document.getElementById("dashboardUser").innerText=
+document.getElementById("accountEmail").innerText=
 user.email;
+
+document.getElementById("accountName").innerText=
+user.email.split("@")[0];
+
+document.getElementById("sellerEmail").innerText=
+user.email;
+
+document.getElementById("dashboard").classList.add("show");
 
 await loadMyProducts();
 
 }else{
 
-loginNav.style.display="block";
-
-logoutNav.style.display="none";
-
 document.getElementById("authStatus").innerText=
 "Not logged in";
 
-dashboard.classList.remove("show");
+document.getElementById("accountName").innerText=
+"Guest User";
+
+document.getElementById("accountEmail").innerText=
+"Login to manage your account";
+
+document.getElementById("dashboard").classList.remove("show");
 
 }
 
 });
 
 
-/* SIGNUP */
-
 window.signupUser=async function(){
 
-const email=
-document.getElementById("authEmail").value.trim();
-
-const password=
-document.getElementById("authPassword").value;
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
 
 if(!email||!password){
-
-toast("Email and password enter karo.");
-
+toast("Email ane password nakho.");
 return;
 }
 
 if(password.length<6){
-
-toast("Password minimum 6 characters hovu joie.");
-
+toast("Password minimum 6 characters.");
 return;
 }
 
 try{
-
-toast("Creating account...");
 
 await createUserWithEmailAndPassword(
 auth,email,password
 );
 
-toast("Account created successfully 🎉");
+toast("🎉 Account created!");
 
 }catch(error){
-
-console.error(error);
 
 toast(firebaseError(error));
 
@@ -1162,36 +1290,25 @@ toast(firebaseError(error));
 };
 
 
-/* LOGIN */
-
 window.loginUser=async function(){
 
-const email=
-document.getElementById("authEmail").value.trim();
-
-const password=
-document.getElementById("authPassword").value;
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
 
 if(!email||!password){
-
-toast("Email and password enter karo.");
-
+toast("Email ane password nakho.");
 return;
 }
 
 try{
 
-toast("Logging in...");
-
 await signInWithEmailAndPassword(
 auth,email,password
 );
 
-toast("Welcome to Valzo Hub 🔥");
+toast("🔥 Welcome to Valzo Hub!");
 
 }catch(error){
-
-console.error(error);
 
 toast(firebaseError(error));
 
@@ -1200,17 +1317,12 @@ toast(firebaseError(error));
 };
 
 
-/* FORGOT PASSWORD */
+window.resetPassword=async function(){
 
-window.forgotPassword=async function(){
-
-const email=
-document.getElementById("authEmail").value.trim();
+const email=document.getElementById("email").value.trim();
 
 if(!email){
-
-toast("Pehla email address enter karo.");
-
+toast("Pehla email nakho.");
 return;
 }
 
@@ -1218,11 +1330,9 @@ try{
 
 await sendPasswordResetEmail(auth,email);
 
-toast("Password reset email mokli didho Gmail check karo 📩");
+toast("📩 Password reset email sent.");
 
 }catch(error){
-
-console.error(error);
 
 toast(firebaseError(error));
 
@@ -1231,38 +1341,25 @@ toast(firebaseError(error));
 };
 
 
-/* LOGOUT */
-
-window.logout=async function(){
-
-try{
+window.logoutUser=async function(){
 
 await signOut(auth);
 
 toast("Logged out.");
-
-}catch(error){
-
-toast(firebaseError(error));
-
-}
 
 };
 
 
 /* PUBLISH PRODUCT */
 
-window.addSellerProduct=async function(){
-
-console.log("Publish button clicked");
+window.publishProduct=async function(){
 
 if(!currentUser){
 
 toast("Pehla login karo.");
-
-scrollAuth();
-
+go("login");
 return;
+
 }
 
 const sellerName=
@@ -1282,30 +1379,22 @@ document.getElementById("productDescription").value.trim();
 
 
 if(!sellerName){
-
 toast("Seller Name nakho.");
-
 return;
 }
 
 if(!name){
-
 toast("Product Name nakho.");
-
 return;
 }
 
 if(!price||price<=0){
-
-toast("Valid product price nakho.");
-
+toast("Valid price nakho.");
 return;
 }
 
 if(!image){
-
 toast("Product Image URL nakho.");
-
 return;
 }
 
@@ -1313,85 +1402,60 @@ return;
 const btn=document.getElementById("publishBtn");
 
 btn.disabled=true;
-
 btn.innerText="Publishing...";
 
 
 try{
 
-const productData={
+const data={
 
-sellerName:sellerName,
-
-name:name,
-
-price:price,
-
-image:image,
-
-description:description,
-
+sellerName,
+name,
+price,
+image,
+description,
 sellerId:currentUser.uid,
-
 sellerEmail:currentUser.email,
-
 createdAt:serverTimestamp()
 
 };
 
 
-console.log("Saving product:",productData);
-
-
-const docRef=await addDoc(
+const ref=await addDoc(
 collection(db,"products"),
-productData
+data
 );
 
 
-console.log("Product saved:",docRef.id);
-
-
-/* immediately show product */
-
 addProductCard({
-...productData,
-id:docRef.id
+...data,
+id:ref.id
 });
 
 
-/* clear form */
-
 document.getElementById("sellerName").value="";
-
 document.getElementById("productName").value="";
-
 document.getElementById("productPrice").value="";
-
 document.getElementById("productImage").value="";
-
 document.getElementById("productDescription").value="";
 
 
 await loadMyProducts();
 
-toast("🎉 Product successfully published!");
+toast("🎉 Product published successfully!");
 
-document
-.getElementById("products")
-.scrollIntoView({behavior:"smooth"});
+go("shop");
 
 
 }catch(error){
 
-console.error("FIRESTORE ERROR:",error);
+console.error(error);
 
 toast("❌ "+firebaseError(error));
 
 }finally{
 
 btn.disabled=false;
-
 btn.innerText="➕ Publish Product";
 
 }
@@ -1399,7 +1463,7 @@ btn.innerText="➕ Publish Product";
 };
 
 
-/* LOAD FIRESTORE PRODUCTS */
+/* LOAD PRODUCTS */
 
 async function loadProducts(){
 
@@ -1419,32 +1483,24 @@ id:item.id
 
 }catch(error){
 
-console.error("Products load error:",error);
+console.error(error);
 
 }
 
 }
 
-
-/* ADD PRODUCT CARD */
 
 function addProductCard(data){
 
-const list=
-document.getElementById("productList");
+const list=document.getElementById("productList");
 
 if(!data.name)return;
 
-
-/* avoid duplicate document */
-
-if(data.id){
-
-const old=document.querySelector(
+if(data.id &&
+document.querySelector(
 '[data-product-id="'+data.id+'"]'
-);
-
-if(old)return;
+)){
+return;
 }
 
 
@@ -1459,76 +1515,64 @@ card.dataset.productId=data.id;
 }
 
 
-const safeName=escapeHtml(data.name);
-
-const safeDescription=
-escapeHtml(data.description||"Available on Valzo Hub.");
-
-const safeImage=
-escapeHtml(data.image||"");
-
-const price=Number(data.price||0);
+const image=
+data.image ||
+"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85";
 
 
 card.innerHTML=`
 
 <div class="product-image">
 
-<span class="product-badge">NEW</span>
+<span class="badge">NEW</span>
 
-<button class="wishlist">
-♡
-</button>
+<button class="heart">♡</button>
 
 <img
-src="${safeImage}"
-alt="${safeName}"
-onerror="this.src='https://via.placeholder.com/700x500?text=Valzo+Hub'">
+src="${escapeHtml(image)}"
+alt="${escapeHtml(data.name)}"
+onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85'">
 
 </div>
 
 <div class="product-info">
 
-<h3>${safeName}</h3>
+<h3>${escapeHtml(data.name)}</h3>
 
-<div class="description">
-${safeDescription}
+<div class="desc">
+${escapeHtml(data.description||"Available on Valzo Hub.")}
 </div>
 
 <div class="product-bottom">
 
 <div class="price">
-₹${price.toLocaleString("en-IN")}
+₹${Number(data.price||0).toLocaleString("en-IN")}
 </div>
 
-<button class="add-btn">
+<button class="add">
 Add +
 </button>
 
 </div>
 
-<p style="font-size:11px;color:#888;margin-top:9px">
+<small style="color:#888">
 Seller: ${escapeHtml(data.sellerName||"Valzo Seller")}
-</p>
+</small>
 
 </div>
 `;
 
 
-card.querySelector(".wishlist")
-.addEventListener("click",function(){
-
-toggleWish(this);
-
-});
+card.querySelector(".heart")
+.onclick=function(){
+wish(this);
+};
 
 
-card.querySelector(".add-btn")
-.addEventListener("click",function(){
-
-addToCart(data.name,price);
-
-});
+card.querySelector(".add")
+.onclick=function(){
+addCart(data.name,Number(data.price||0));
+};
 
 
 list.appendChild(card);
@@ -1542,11 +1586,9 @@ async function loadMyProducts(){
 
 if(!currentUser)return;
 
-const list=
-document.getElementById("myProducts");
+const box=document.getElementById("myProducts");
 
-list.innerHTML="";
-
+box.innerHTML="";
 
 try{
 
@@ -1557,13 +1599,17 @@ where("sellerId","==",currentUser.uid)
 
 const snapshot=await getDocs(q);
 
+document.getElementById("sellerProductCount")
+.innerText=snapshot.size;
+
 
 if(snapshot.empty){
 
-list.innerHTML=
-'<div class="empty">You have not published any product yet.</div>';
+box.innerHTML=
+'<div style="color:#777;padding:20px 0">No products yet.</div>';
 
 return;
+
 }
 
 
@@ -1578,36 +1624,23 @@ row.className="my-product";
 row.innerHTML=`
 
 <div>
-
-<strong>
-${escapeHtml(data.name||"Product")}
-</strong>
-
+<strong>${escapeHtml(data.name)}</strong>
 <br>
-
 ₹${Number(data.price||0).toLocaleString("en-IN")}
-
 <br>
-
 <small style="color:#888">
 ${escapeHtml(data.description||"")}
 </small>
-
 </div>
 
 <button class="delete">
 Delete
 </button>
-
 `;
 
 
 row.querySelector(".delete")
-.addEventListener("click",async()=>{
-
-if(!confirm("Product delete karvo che?"))
-return;
-
+.onclick=async()=>{
 
 try{
 
@@ -1627,90 +1660,31 @@ toast("Product deleted.");
 
 }catch(error){
 
-toast("Delete failed: "+firebaseError(error));
+toast(firebaseError(error));
 
 }
 
+};
+
+
+box.appendChild(row);
+
 });
-
-
-list.appendChild(row);
-
-});
-
 
 }catch(error){
 
 console.error(error);
 
-list.innerHTML=
-'<div class="empty">Dashboard load error.</div>';
-
 }
 
 }
-
-
-/* SEARCH */
-
-window.searchProducts=function(){
-
-const value=
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
-
-
-document
-.querySelectorAll(".product")
-.forEach(card=>{
-
-const name=
-(card.dataset.name||"")
-.toLowerCase();
-
-card.style.display=
-name.includes(value)?"block":"none";
-
-});
-
-};
-
-
-/* WISHLIST */
-
-window.toggleWish=function(btn){
-
-if(btn.innerText==="♡"){
-
-btn.innerText="♥";
-
-btn.style.color="#ff3f65";
-
-toast("Added to wishlist ❤️");
-
-}else{
-
-btn.innerText="♡";
-
-btn.style.color="";
-
-toast("Removed from wishlist");
-
-}
-
-};
 
 
 /* CART */
 
-window.addToCart=function(name,price){
+window.addCart=function(name,price){
 
-cart.push({
-name:name,
-price:Number(price)
-});
+cart.push({name,price});
 
 updateCart();
 
@@ -1721,41 +1695,32 @@ toast(name+" added to cart 🛒");
 
 function updateCart(){
 
-document.getElementById("cartCount")
-.innerText=cart.length;
+document.getElementById("cartCount").innerText=
+cart.length;
 
 
-const box=
-document.getElementById("cartItems");
+const box=document.getElementById("cartItems");
 
 
-if(cart.length===0){
+if(!cart.length){
 
 box.innerHTML=
-'<div class="empty">Your cart is empty.</div>';
+'<div style="text-align:center;color:#888;padding:20px">Your cart is empty.</div>';
 
 }else{
 
-box.innerHTML=
-cart.map((item,index)=>`
+box.innerHTML=cart.map((item,index)=>`
 
 <div class="cart-item">
 
 <div>
-
-<strong>
-${escapeHtml(item.name)}
-</strong>
-
+<strong>${escapeHtml(item.name)}</strong>
 <br>
-
 ₹${Number(item.price).toLocaleString("en-IN")}
-
 </div>
 
-<button
-class="remove"
-onclick="removeItem(${index})">
+<button class="remove"
+onclick="removeCart(${index})">
 Remove
 </button>
 
@@ -1770,18 +1735,15 @@ const total=cart.reduce(
 (sum,item)=>sum+item.price,0
 );
 
-
-document.getElementById("cartTotal")
-.innerText=
+document.getElementById("cartTotal").innerText=
 total.toLocaleString("en-IN");
 
 }
 
 
-window.removeItem=function(index){
+window.removeCart=function(index){
 
 cart.splice(index,1);
-
 updateCart();
 
 };
@@ -1789,8 +1751,7 @@ updateCart();
 
 window.openCart=function(){
 
-document
-.getElementById("cart")
+document.getElementById("cart")
 .classList.add("open");
 
 };
@@ -1798,51 +1759,43 @@ document
 
 window.closeCart=function(){
 
-document
-.getElementById("cart")
+document.getElementById("cart")
 .classList.remove("open");
 
 };
 
 
-/* WHATSAPP ORDER */
+/* WHATSAPP */
 
 window.orderWhatsApp=function(){
 
 if(!cart.length){
 
 toast("Cart empty che.");
-
 return;
+
 }
 
-
 let message=
-"Hello Valzo Hub! 👋\n\n"+
-"I want to order:\n";
-
+"Hello Valzo Hub 👋\n\nI want to order:\n";
 
 cart.forEach((item,index)=>{
 
 message+=
 (index+1)+". "+
 item.name+
-" - ₹"+
-item.price+
+" - ₹"+item.price+
 "\n";
 
 });
-
 
 const total=cart.reduce(
 (sum,item)=>sum+item.price,0
 );
 
-
 message+=
 "\nTotal: ₹"+total+
-"\n\nPlease confirm my order. 😊";
-
+"\n\nPlease confirm my order.";
 
 window.open(
 "https://wa.me/917016006504?text="+
@@ -1853,92 +1806,111 @@ encodeURIComponent(message),
 };
 
 
-/* NAV */
+/* SEARCH */
 
-window.scrollAuth=function(){
+window.searchProducts=function(){
 
-document
-.getElementById("auth")
-.scrollIntoView({
-behavior:"smooth"
+const value=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+
+document.querySelectorAll(".product")
+.forEach(card=>{
+
+const name=
+(card.dataset.name||"")
+.toLowerCase();
+
+card.style.display=
+name.includes(value)?"block":"none";
+
 });
 
 };
 
 
-window.scrollSeller=function(){
+/* CATEGORY */
 
-document
-.getElementById("seller")
-.scrollIntoView({
-behavior:"smooth"
-});
+window.filterCategory=function(category){
+
+if(category==="all"){
+
+document.querySelectorAll(".product")
+.forEach(x=>x.style.display="block");
+
+return;
+
+}
+
+toast(category+" category selected.");
 
 };
 
 
-/* SAFE HTML */
+/* WISHLIST */
+
+window.wish=function(btn){
+
+if(btn.innerText==="♡"){
+
+btn.innerText="♥";
+btn.style.color="#e53935";
+
+toast("❤️ Added to wishlist");
+
+}else{
+
+btn.innerText="♡";
+btn.style.color="";
+
+toast("Removed from wishlist");
+
+}
+
+};
+
+
+/* ERROR */
+
+function firebaseError(error){
+
+const code=error?.code||"";
+
+if(code.includes("permission-denied"))
+return "Firestore permission denied. Rules check karo.";
+
+if(code.includes("unauthorized-domain"))
+return "Firebase Authentication ma website domain add karo.";
+
+if(code.includes("invalid-credential"))
+return "Email/password incorrect che.";
+
+if(code.includes("invalid-email"))
+return "Email address invalid che.";
+
+if(code.includes("email-already-in-use"))
+return "Aa email already registered che.";
+
+if(code.includes("weak-password"))
+return "Password minimum 6 characters.";
+
+return error?.message||"Something went wrong.";
+
+}
+
 
 function escapeHtml(value){
 
 return String(value)
 
 .replace(/&/g,"&amp;")
-
 .replace(/</g,"&lt;")
-
 .replace(/>/g,"&gt;")
-
 .replace(/"/g,"&quot;")
-
 .replace(/'/g,"&#039;");
-
-}
-
-
-/* FIREBASE ERROR */
-
-function firebaseError(error){
-
-const code=error?.code||"";
-
-if(code.includes("permission-denied")){
-
-return "Firestore permission denied. Rules check karo.";
-
-}
-
-if(code.includes("unauthorized-domain")){
-
-return "Firebase Authentication ma aa website domain add nathi.";
-
-}
-
-if(code.includes("auth/invalid-credential")){
-
-return "Email athva password incorrect che.";
-
-}
-
-if(code.includes("auth/invalid-email")){
-
-return "Email address invalid che.";
-
-}
-
-if(code.includes("auth/email-already-in-use")){
-
-return "Aa email thi account already che.";
-
-}
-
-if(code.includes("auth/weak-password")){
-
-return "Password minimum 6 characters hovu joie.";
-
-}
-
-return error?.message||"Unknown error.";
 
 }
 
