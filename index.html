@@ -1,144 +1,171 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Valzo Hub — Shop • Sell • Discover</title>
-
-<meta name="description"
-content="Valzo Hub — Shop, sell and discover amazing products.">
+<title>Valzo Hub — Shop Smart. Live Better.</title>
+<meta name="description" content="Valzo Hub — Shop, sell and discover products.">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
 html{scroll-behavior:smooth}
-
 body{
-  font-family:Arial,sans-serif;
-  background:#f6f6f3;
+  font-family:Inter,Arial,sans-serif;
+  background:#f5f6f8;
   color:#111;
 }
-
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 
 :root{
-  --black:#0b0b0b;
-  --gold:#ffd43b;
-  --green:#20d46b;
-  --white:#fff;
-  --muted:#707070;
+  --blue:#2874f0;
+  --blue2:#1455c0;
+  --yellow:#ffd814;
+  --green:#18b957;
+  --dark:#111827;
+  --muted:#6b7280;
+  --card:#fff;
+  --border:#e5e7eb;
 }
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(11,11,11,.94);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  background:#111827;
+  color:white;
+  box-shadow:0 3px 15px rgba(0,0,0,.18);
 }
 
-.nav{
-  max-width:1180px;
+.topbar{
+  max-width:1250px;
   margin:auto;
   min-height:70px;
-  padding:12px 18px;
+  padding:10px 18px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
+  gap:18px;
 }
 
 .logo{
-  color:white;
-  font-size:25px;
+  font-size:27px;
+  font-weight:950;
+  white-space:nowrap;
+  letter-spacing:-1px;
+}
+
+.logo span{color:var(--yellow)}
+
+.header-search{
+  flex:1;
+  display:flex;
+  max-width:650px;
+  background:white;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.header-search input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:13px 16px;
+  font-size:15px;
+}
+
+.header-search button{
+  border:0;
+  background:var(--yellow);
+  padding:0 20px;
   font-weight:900;
 }
 
-.logo span{color:var(--gold)}
-
-.nav-actions{
+.header-actions{
   display:flex;
-  gap:7px;
   align-items:center;
+  gap:8px;
+  margin-left:auto;
 }
 
-.nav-btn{
+.hbtn{
   border:0;
-  border-radius:50px;
-  padding:10px 14px;
+  border-radius:7px;
+  padding:10px 13px;
   font-weight:800;
 }
 
-.login-btn{
+.login{background:white;color:#111}
+.logout{background:#374151;color:white}
+.sell{background:var(--green);color:white}
+.cart{background:var(--yellow);color:#111}
+
+.categorybar{
   background:white;
-  color:#111;
+  border-bottom:1px solid var(--border);
 }
 
-.logout-btn{
-  background:#292929;
-  color:white;
+.categories{
+  max-width:1250px;
+  margin:auto;
+  padding:10px 18px;
+  display:flex;
+  gap:25px;
+  overflow:auto;
 }
 
-.sell-btn{
-  background:var(--green);
-  color:white;
-}
-
-.cart-btn{
-  background:var(--gold);
-  color:#111;
+.categories button{
+  border:0;
+  background:none;
+  white-space:nowrap;
+  font-weight:700;
+  color:#333;
 }
 
 .hero{
-  min-height:560px;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(40,116,240,.25),transparent 30%),
+    radial-gradient(circle at 15% 80%,rgba(255,216,20,.15),transparent 28%),
+    linear-gradient(135deg,#0b1220,#18263d);
+  color:white;
+  min-height:430px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:75px 20px;
-  color:white;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(255,212,59,.16),transparent 30%),
-    radial-gradient(circle at 80% 70%,rgba(32,212,107,.10),transparent 28%),
-    linear-gradient(135deg,#050505,#191919 55%,#080808);
+  padding:70px 20px;
 }
 
-.hero-content{
-  max-width:800px;
-}
+.hero-content{max-width:850px}
 
-.badge{
+.offer{
   display:inline-block;
-  padding:8px 14px;
-  border:1px solid rgba(255,212,59,.35);
-  background:rgba(255,212,59,.08);
-  color:var(--gold);
-  border-radius:50px;
+  background:rgba(255,216,20,.12);
+  border:1px solid rgba(255,216,20,.35);
+  color:var(--yellow);
+  padding:8px 15px;
+  border-radius:30px;
   font-size:13px;
-  font-weight:800;
+  font-weight:900;
   margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(42px,8vw,78px);
-  line-height:.98;
+  font-size:clamp(40px,7vw,70px);
+  line-height:1;
   letter-spacing:-4px;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
-.hero h1 span{
-  color:var(--gold);
-}
+.hero h1 span{color:var(--yellow)}
 
 .hero p{
-  color:#cfcfcf;
+  color:#d5dbea;
   font-size:18px;
   line-height:1.6;
-  max-width:620px;
-  margin:0 auto 28px;
+  max-width:650px;
+  margin:0 auto 27px;
 }
 
 .hero-buttons{
@@ -148,102 +175,69 @@ header{
   flex-wrap:wrap;
 }
 
-.primary-btn,
-.secondary-btn{
+.hero-btn{
   border:0;
   padding:14px 23px;
-  border-radius:50px;
+  border-radius:7px;
   font-weight:900;
 }
 
-.primary-btn{
-  background:var(--gold);
+.shop-now{
+  background:var(--yellow);
   color:#111;
 }
 
-.secondary-btn{
-  background:rgba(255,255,255,.09);
-  color:white;
-  border:1px solid rgba(255,255,255,.15);
+.start-selling{
+  background:white;
+  color:#111;
 }
 
-.section{
-  max-width:1180px;
+.container{
+  max-width:1250px;
   margin:auto;
-  padding:60px 18px;
+  padding:35px 18px;
 }
 
-.section-title{
-  margin-bottom:28px;
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
-.section-title h2{
-  font-size:32px;
+.section-head h2{
+  font-size:28px;
   letter-spacing:-1px;
 }
 
-.section-title p{
+.section-head p{
   color:var(--muted);
-  margin-top:6px;
-}
-
-.search-wrap{
-  max-width:780px;
-  margin:-25px auto 0;
-  position:relative;
-  z-index:10;
-  padding:0 18px;
-}
-
-.search{
-  background:white;
-  border-radius:18px;
-  padding:6px;
-  box-shadow:0 18px 45px rgba(0,0,0,.12);
-  display:flex;
-  border:1px solid #eee;
-}
-
-.search input{
-  width:100%;
-  border:0;
-  outline:0;
-  padding:15px;
-  background:transparent;
-  font-size:16px;
-}
-
-.search button{
-  border:0;
-  background:#111;
-  color:white;
-  border-radius:13px;
-  padding:0 18px;
-  font-weight:800;
+  margin-top:5px;
 }
 
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 
 .product{
   background:white;
-  border:1px solid #ecece8;
-  border-radius:20px;
+  border:1px solid var(--border);
+  border-radius:10px;
   overflow:hidden;
-  transition:.25s;
+  position:relative;
+  transition:.2s;
 }
 
 .product:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 40px rgba(0,0,0,.10);
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,.10);
 }
 
 .product-image{
-  height:225px;
-  background:#eee;
+  height:230px;
+  background:#f1f3f5;
   position:relative;
   overflow:hidden;
 }
@@ -252,93 +246,98 @@ header{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.35s;
+  transition:.3s;
 }
 
-.product:hover .product-image img{
-  transform:scale(1.05);
-}
+.product:hover img{transform:scale(1.04)}
 
-.product-badge{
+.badge{
   position:absolute;
-  top:12px;
-  left:12px;
-  background:var(--gold);
-  color:#111;
-  padding:6px 9px;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:900;
+  left:10px;
+  top:10px;
   z-index:2;
+  background:var(--yellow);
+  color:#111;
+  padding:5px 8px;
+  border-radius:5px;
+  font-size:10px;
+  font-weight:950;
 }
 
-.wishlist{
+.wish{
   position:absolute;
-  right:12px;
-  top:12px;
-  width:38px;
-  height:38px;
+  right:10px;
+  top:10px;
+  z-index:2;
+  width:36px;
+  height:36px;
   border:0;
   border-radius:50%;
-  background:rgba(255,255,255,.92);
+  background:white;
   font-size:18px;
-  z-index:2;
 }
 
-.product-info{
-  padding:17px;
-}
+.product-info{padding:15px}
 
 .product-info h3{
-  font-size:18px;
-  margin-bottom:8px;
+  font-size:17px;
+  margin-bottom:7px;
 }
 
-.description{
-  color:#777;
+.desc{
+  color:#6b7280;
   font-size:13px;
-  min-height:38px;
+  min-height:39px;
   line-height:1.5;
+}
+
+.rating{
+  margin-top:8px;
+  font-size:12px;
+  color:#168a42;
+  font-weight:800;
 }
 
 .product-bottom{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
-  margin-top:14px;
+  margin-top:13px;
+  gap:8px;
 }
 
 .price{
   font-size:20px;
+  font-weight:950;
+}
+
+.add{
+  border:0;
+  background:var(--blue);
+  color:white;
+  padding:9px 13px;
+  border-radius:6px;
   font-weight:900;
 }
 
-.add-btn{
-  border:0;
-  background:#111;
+.add:hover{background:var(--blue2)}
+
+.seller{
+  background:linear-gradient(135deg,#111827,#1e293b);
   color:white;
-  padding:10px 13px;
-  border-radius:10px;
-  font-weight:800;
+  border-radius:14px;
+  padding:35px 20px;
 }
 
-.seller-area{
-  background:linear-gradient(145deg,#0a0a0a,#181818);
-  border-radius:28px;
-  padding:45px 20px;
-  color:white;
-}
-
-.seller-area h2{
+.seller h2{
   text-align:center;
-  font-size:32px;
+  font-size:30px;
 }
 
-.seller-area>p{
+.seller>p{
   text-align:center;
-  color:#aaa;
-  margin:10px 0 25px;
+  color:#b9c0cd;
+  margin:8px 0 22px;
 }
 
 .form{
@@ -346,65 +345,59 @@ header{
   margin:auto;
   background:white;
   color:#111;
-  border-radius:20px;
   padding:22px;
+  border-radius:10px;
 }
 
 .form label{
   display:block;
   font-size:13px;
-  font-weight:800;
+  font-weight:900;
   margin:12px 0 6px;
 }
 
-.form input,
-.form textarea{
+.form input,.form textarea{
   width:100%;
-  padding:13px;
+  padding:12px;
   border:1px solid #ddd;
-  border-radius:10px;
+  border-radius:7px;
   outline:none;
 }
 
 .form textarea{
-  min-height:100px;
+  min-height:95px;
   resize:vertical;
 }
 
-.submit{
+.publish{
   width:100%;
-  border:0;
   margin-top:15px;
-  padding:14px;
-  border-radius:11px;
+  padding:13px;
+  border:0;
+  border-radius:7px;
   background:var(--green);
   color:white;
-  font-weight:900;
+  font-weight:950;
 }
 
-.auth-box,
-.dashboard{
-  max-width:650px;
+.auth{
+  max-width:600px;
   margin:auto;
   background:white;
-  border:1px solid #e8e8e5;
-  border-radius:22px;
+  border:1px solid var(--border);
+  border-radius:12px;
   padding:25px;
-  box-shadow:0 12px 35px rgba(0,0,0,.06);
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.auth-box h2,
-.dashboard h2{
-  text-align:center;
-  margin-bottom:18px;
-}
+.auth h2{text-align:center;margin-bottom:18px}
 
-.auth-box input{
+.auth input{
   width:100%;
   padding:13px;
-  margin:6px 0;
   border:1px solid #ddd;
-  border-radius:10px;
+  border-radius:7px;
+  margin-bottom:9px;
   outline:none;
 }
 
@@ -412,31 +405,29 @@ header{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:9px;
-  margin-top:10px;
 }
 
 .auth-buttons button{
   border:0;
   padding:13px;
-  border-radius:10px;
-  font-weight:900;
-  background:#111;
+  border-radius:7px;
+  background:var(--blue);
   color:white;
+  font-weight:900;
 }
 
-.auth-buttons button:last-child{
+.auth-buttons button:nth-child(2){
   background:var(--green);
 }
 
-.reset-btn{
-  width:100%;
-  margin-top:10px;
+.forgot{
+  display:block;
+  text-align:center;
+  margin-top:14px;
+  color:var(--blue);
   border:0;
-  padding:13px;
-  border-radius:10px;
-  background:var(--gold);
-  color:#111;
-  font-weight:900;
+  background:none;
+  font-weight:700;
 }
 
 .status{
@@ -444,59 +435,68 @@ header{
   color:#777;
   font-size:13px;
   margin-top:12px;
-  min-height:18px;
 }
 
 .dashboard{
   display:none;
+  max-width:800px;
+  margin:auto;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px;
 }
 
-.dashboard.show{
-  display:block;
-}
+.dashboard.show{display:block}
+
+.dashboard h2{text-align:center}
 
 .my-product{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:12px;
-  padding:13px 0;
+  justify-content:space-between;
+  gap:10px;
+  padding:14px 0;
   border-bottom:1px solid #eee;
 }
 
 .delete{
   border:0;
-  background:#ff4545;
+  background:#ef4444;
   color:white;
   padding:8px 11px;
-  border-radius:8px;
+  border-radius:6px;
   font-weight:800;
 }
 
-.cart{
+.empty{
+  text-align:center;
+  color:#888;
+  padding:20px;
+}
+
+.cart-panel{
   position:fixed;
   right:-430px;
   top:0;
-  height:100%;
-  width:390px;
+  width:400px;
   max-width:92%;
+  height:100%;
   background:white;
-  z-index:2000;
+  z-index:2500;
   padding:22px;
-  box-shadow:-20px 0 55px rgba(0,0,0,.2);
+  box-shadow:-15px 0 45px rgba(0,0,0,.25);
   transition:.3s;
   overflow:auto;
 }
 
-.cart.open{
-  right:0;
-}
+.cart-panel.open{right:0}
 
 .cart-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin-bottom:15px;
+  align-items:center;
+  margin-bottom:12px;
 }
 
 .close{
@@ -512,21 +512,21 @@ header{
   display:flex;
   justify-content:space-between;
   gap:10px;
-  padding:14px 0;
+  padding:13px 0;
   border-bottom:1px solid #eee;
 }
 
 .remove{
   border:0;
-  background:#ff4545;
+  background:#ef4444;
   color:white;
   padding:6px 9px;
-  border-radius:7px;
+  border-radius:5px;
 }
 
 .total{
   font-size:22px;
-  font-weight:900;
+  font-weight:950;
   margin:22px 0;
 }
 
@@ -534,129 +534,84 @@ header{
   width:100%;
   border:0;
   padding:14px;
-  border-radius:12px;
+  border-radius:8px;
   background:var(--green);
   color:white;
-  font-weight:900;
-}
-
-.empty{
-  text-align:center;
-  padding:20px;
-  color:#888;
+  font-weight:950;
 }
 
 footer{
-  background:#090909;
-  color:#888;
+  margin-top:25px;
+  background:#111827;
+  color:#9ca3af;
   text-align:center;
-  padding:35px 18px;
+  padding:30px 15px;
   line-height:2;
 }
 
-footer strong{
-  color:white;
-}
+footer strong{color:white}
 
 .toast{
   position:fixed;
-  bottom:22px;
   left:50%;
-  transform:translateX(-50%) translateY(20px);
+  bottom:22px;
+  transform:translate(-50%,30px);
   opacity:0;
   pointer-events:none;
-  background:#111;
+  background:#111827;
   color:white;
-  padding:13px 18px;
-  border-radius:12px;
-  z-index:3000;
+  padding:12px 17px;
+  border-radius:8px;
+  z-index:4000;
   transition:.25s;
-  text-align:center;
-  max-width:90%;
 }
 
 .toast.show{
   opacity:1;
-  transform:translateX(-50%) translateY(0);
+  transform:translate(-50%,0);
 }
 
-@media(max-width:650px){
+@media(max-width:950px){
+  .products{grid-template-columns:repeat(3,1fr)}
+}
 
-  .nav{
-    min-height:65px;
+@media(max-width:700px){
+  .topbar{
+    flex-wrap:wrap;
   }
 
-  .logo{
-    font-size:21px;
+  .header-search{
+    order:3;
+    flex-basis:100%;
+    max-width:none;
   }
 
-  .nav-btn{
-    padding:8px 10px;
-    font-size:12px;
-  }
-
-  .hero{
-    min-height:500px;
-    padding:65px 18px;
-  }
-
-  .hero h1{
-    letter-spacing:-2.5px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .section{
-    padding:48px 14px;
+  .header-actions{
+    margin-left:auto;
   }
 
   .products{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
   }
 
-  .product-image{
-    height:175px;
+  .product-image{height:180px}
+
+  .hero{
+    min-height:450px;
   }
 
-  .product-info{
-    padding:12px;
+  .hero h1{
+    letter-spacing:-2px;
   }
 
-  .product-info h3{
-    font-size:15px;
-  }
-
-  .description{
-    font-size:12px;
-  }
-
-  .price{
-    font-size:17px;
-  }
-
-  .add-btn{
-    font-size:11px;
-    padding:9px;
-  }
-
-  .wishlist{
-    width:34px;
-    height:34px;
-  }
-
-  .auth-buttons{
-    grid-template-columns:1fr;
-  }
+  .categories{gap:18px}
 }
 
 @media(max-width:390px){
-
-  .products{
-    grid-template-columns:1fr;
-  }
+  .products{grid-template-columns:1fr}
+  .logo{font-size:22px}
+  .hbtn{padding:8px 9px;font-size:11px}
 }
 </style>
 </head>
@@ -664,565 +619,419 @@ footer strong{
 <body>
 
 <header>
+  <div class="topbar">
 
-<div class="nav">
+    <div class="logo">
+      Valzo <span>Hub</span>
+    </div>
 
-<div class="logo">
-Valzo <span>Hub</span>
-</div>
+    <div class="header-search">
+      <input id="search" type="text"
+        placeholder="Search for products, brands and more..."
+        oninput="searchProducts()">
+      <button onclick="searchProducts()">🔎</button>
+    </div>
 
-<div class="nav-actions">
+    <div class="header-actions">
 
-<button
-class="nav-btn login-btn"
-id="loginNav"
-onclick="scrollAuth()">
-🔐 Login
-</button>
+      <button class="hbtn login"
+        id="loginNav"
+        onclick="scrollAuth()">🔐 Login</button>
 
-<button
-class="nav-btn logout-btn"
-id="logoutNav"
-onclick="logout()"
-style="display:none">
-Logout
-</button>
+      <button class="hbtn logout"
+        id="logoutNav"
+        onclick="logout()"
+        style="display:none">Logout</button>
 
-<button
-class="nav-btn sell-btn"
-onclick="scrollSeller()">
-🏪 Sell
-</button>
+      <button class="hbtn sell"
+        onclick="scrollSeller()">🏪 Sell</button>
 
-<button
-class="nav-btn cart-btn"
-onclick="openCart()">
-🛒 <span id="cartCount">0</span>
-</button>
+      <button class="hbtn cart"
+        onclick="openCart()">🛒 <span id="cartCount">0</span></button>
 
-</div>
+    </div>
+  </div>
 
-</div>
+  <div class="categorybar">
+    <div class="categories">
+      <button onclick="goProducts()">All Products</button>
+      <button onclick="goProducts()">🔥 Trending</button>
+      <button onclick="goProducts()">👕 Fashion</button>
+      <button onclick="goProducts()">👟 Shoes</button>
+      <button onclick="goProducts()">⌚ Electronics</button>
+      <button onclick="goProducts()">🎒 Accessories</button>
+      <button onclick="scrollSeller()">🏪 Sell on Valzo</button>
+    </div>
+  </div>
 </header>
 
 
 <section class="hero">
+  <div class="hero-content">
 
-<div class="hero-content">
+    <div class="offer">✦ INDIA'S NEW SHOPPING DESTINATION</div>
 
-<div class="badge">
-✦ THE NEW WAY TO SHOP & SELL
-</div>
+    <h1>
+      Shop Smart.<br>
+      <span>Live Better.</span>
+    </h1>
 
-<h1>
-Welcome to <span>Valzo Hub</span>
-</h1>
+    <p>
+      Discover trending products, support local sellers
+      and build your own store with Valzo Hub.
+    </p>
 
-<p>
-Discover products. Support sellers. Build your store.
-Everything you need, all in one beautiful place.
-</p>
+    <div class="hero-buttons">
 
-<div class="hero-buttons">
+      <button class="hero-btn shop-now"
+        onclick="goProducts()">
+        🛍️ Explore Products
+      </button>
 
-<button
-class="primary-btn"
-onclick="document.getElementById('products').scrollIntoView()">
-🛍️ Explore Products
-</button>
+      <button class="hero-btn start-selling"
+        onclick="scrollSeller()">
+        🏪 Start Selling
+      </button>
 
-<button
-class="secondary-btn"
-onclick="scrollSeller()">
-🏪 Start Selling
-</button>
+    </div>
 
-</div>
-
-</div>
-
+  </div>
 </section>
 
 
-<div class="search-wrap">
+<section class="container" id="products">
 
-<div class="search">
+  <div class="section-head">
+    <div>
+      <h2>🔥 Trending Products</h2>
+      <p>Popular products on Valzo Hub</p>
+    </div>
+  </div>
 
-<input
-id="search"
-type="text"
-placeholder="🔎 Search products..."
-oninput="searchProducts()">
+  <div class="products" id="productList">
 
-<button onclick="searchProducts()">
-Search
-</button>
+    <!-- STATIC PRODUCTS -->
 
-</div>
+    <div class="product" data-name="Premium T-Shirt" data-static="true">
 
-</div>
+      <div class="product-image">
+        <span class="badge">TRENDING</span>
 
+        <button class="wish"
+          onclick="toggleWish(this)">♡</button>
 
-<section class="section" id="products">
+        <img
+          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
+          alt="Premium T-Shirt">
+      </div>
 
-<div class="section-title">
+      <div class="product-info">
 
-<h2>🔥 Trending Products</h2>
+        <h3>Premium T-Shirt</h3>
 
-<p>
-Hand-picked products for your everyday style.
-</p>
+        <div class="desc">
+          Comfortable premium quality T-shirt.
+        </div>
 
-</div>
+        <div class="rating">★ 4.5 • Popular</div>
 
-<div class="products" id="productList">
+        <div class="product-bottom">
+          <div class="price">₹499</div>
 
+          <button class="add"
+            onclick="addToCart('Premium T-Shirt',499)">
+            Add +
+          </button>
+        </div>
 
-<!-- PRODUCT 1 -->
+      </div>
+    </div>
 
-<div
-class="product"
-data-name="Premium T-Shirt">
 
-<div class="product-image">
+    <div class="product" data-name="Stylish Sneakers" data-static="true">
 
-<span class="product-badge">
-TRENDING
-</span>
+      <div class="product-image">
+        <span class="badge">HOT</span>
 
-<button
-class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
+        <button class="wish"
+          onclick="toggleWish(this)">♡</button>
 
-<img
-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
-alt="Premium T-Shirt">
+        <img
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
+          alt="Stylish Sneakers">
+      </div>
 
-</div>
+      <div class="product-info">
 
-<div class="product-info">
+        <h3>Stylish Sneakers</h3>
 
-<h3>Premium T-Shirt</h3>
+        <div class="desc">
+          Trendy sneakers for everyday style.
+        </div>
 
-<div class="description">
-Comfortable premium quality T-shirt.
-</div>
+        <div class="rating">★ 4.6 • Best Seller</div>
 
-<div class="product-bottom">
+        <div class="product-bottom">
+          <div class="price">₹1,499</div>
 
-<div class="price">
-₹499
-</div>
+          <button class="add"
+            onclick="addToCart('Stylish Sneakers',1499)">
+            Add +
+          </button>
+        </div>
 
-<button
-class="add-btn"
-onclick="addToCart('Premium T-Shirt',499)">
-Add +
-</button>
+      </div>
+    </div>
 
-</div>
 
-</div>
-</div>
+    <div class="product" data-name="Smart Watch" data-static="true">
 
+      <div class="product-image">
+        <span class="badge">NEW</span>
 
-<!-- PRODUCT 2 -->
+        <button class="wish"
+          onclick="toggleWish(this)">♡</button>
 
-<div
-class="product"
-data-name="Stylish Sneakers">
+        <img
+          src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
+          alt="Smart Watch">
+      </div>
 
-<div class="product-image">
+      <div class="product-info">
 
-<span class="product-badge">
-HOT
-</span>
+        <h3>Smart Watch</h3>
 
-<button
-class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
+        <div class="desc">
+          Smart and stylish watch for daily use.
+        </div>
 
-<img
-src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
-alt="Stylish Sneakers">
+        <div class="rating">★ 4.4 • New Arrival</div>
 
-</div>
+        <div class="product-bottom">
+          <div class="price">₹1,999</div>
 
-<div class="product-info">
+          <button class="add"
+            onclick="addToCart('Smart Watch',1999)">
+            Add +
+          </button>
+        </div>
 
-<h3>Stylish Sneakers</h3>
+      </div>
+    </div>
 
-<div class="description">
-Trendy sneakers for everyday style.
-</div>
 
-<div class="product-bottom">
+    <div class="product" data-name="Premium Backpack" data-static="true">
 
-<div class="price">
-₹1,499
-</div>
+      <div class="product-image">
+        <span class="badge">POPULAR</span>
 
-<button
-class="add-btn"
-onclick="addToCart('Stylish Sneakers',1499)">
-Add +
-</button>
+        <button class="wish"
+          onclick="toggleWish(this)">♡</button>
 
-</div>
+        <img
+          src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85"
+          alt="Premium Backpack">
+      </div>
 
-</div>
-</div>
+      <div class="product-info">
 
+        <h3>Premium Backpack</h3>
 
-<!-- PRODUCT 3 -->
+        <div class="desc">
+          Strong and stylish backpack.
+        </div>
 
-<div
-class="product"
-data-name="Smart Watch">
+        <div class="rating">★ 4.5 • Popular</div>
 
-<div class="product-image">
+        <div class="product-bottom">
+          <div class="price">₹899</div>
 
-<span class="product-badge">
-NEW
-</span>
+          <button class="add"
+            onclick="addToCart('Premium Backpack',899)">
+            Add +
+          </button>
+        </div>
 
-<button
-class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
+      </div>
+    </div>
 
-<img
-src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
-alt="Smart Watch">
-
-</div>
-
-<div class="product-info">
-
-<h3>Smart Watch</h3>
-
-<div class="description">
-Smart and stylish watch for daily use.
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-₹1,999
-</div>
-
-<button
-class="add-btn"
-onclick="addToCart('Smart Watch',1999)">
-Add +
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- PRODUCT 4 -->
-
-<div
-class="product"
-data-name="Premium Backpack">
-
-<div class="product-image">
-
-<span class="product-badge">
-POPULAR
-</span>
-
-<button
-class="wishlist"
-onclick="toggleWish(this)">
-♡
-</button>
-
-<img
-src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85"
-alt="Premium Backpack">
-
-</div>
-
-<div class="product-info">
-
-<h3>Premium Backpack</h3>
-
-<div class="description">
-Strong and stylish backpack.
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-₹899
-</div>
-
-<button
-class="add-btn"
-onclick="addToCart('Premium Backpack',899)">
-Add +
-</button>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
+  </div>
 </section>
 
 
-<!-- AUTH -->
+<section class="container" id="auth">
 
-<section class="section" id="auth">
+  <div class="auth">
 
-<div class="auth-box">
+    <h2>🔐 Your Valzo Account</h2>
 
-<h2>
-🔐 Your Valzo Account
-</h2>
+    <input id="authEmail"
+      type="email"
+      placeholder="Email address">
 
-<input
-id="authEmail"
-type="email"
-placeholder="Email address"
-autocomplete="email">
+    <input id="authPassword"
+      type="password"
+      placeholder="Password — minimum 6 characters">
 
-<input
-id="authPassword"
-type="password"
-placeholder="Password — minimum 6 characters"
-autocomplete="current-password">
+    <div class="auth-buttons">
 
-<div class="auth-buttons">
+      <button onclick="loginUser()">
+        Login
+      </button>
 
-<button onclick="loginUser()">
-Login
-</button>
+      <button onclick="signupUser()">
+        Create Account
+      </button>
 
-<button onclick="signupUser()">
-Create Account
-</button>
+    </div>
 
-</div>
+    <button class="forgot"
+      onclick="forgotPassword()">
+      🔑 Forgot Password?
+    </button>
 
-<button
-class="reset-btn"
-onclick="resetPassword()">
-🔑 Forgot Password?
-</button>
+    <div class="status" id="authStatus">
+      Not logged in
+    </div>
 
-<div
-class="status"
-id="authStatus">
-Not logged in
-</div>
-
-</div>
-
+  </div>
 </section>
 
 
-<!-- DASHBOARD -->
+<section class="container">
 
-<section class="section">
+  <div class="dashboard" id="dashboard">
 
-<div
-class="dashboard"
-id="dashboard">
+    <h2>🏪 My Seller Dashboard</h2>
 
-<h2>
-🏪 My Seller Dashboard
-</h2>
+    <p id="dashboardUser"
+      style="text-align:center;color:#777;margin:8px 0 15px">
+    </p>
 
-<p
-id="dashboardUser"
-style="text-align:center;color:#777;margin-bottom:15px">
-</p>
+    <div id="myProducts">
+      <div class="empty">No products yet.</div>
+    </div>
 
-<div id="myProducts">
-
-<div class="empty">
-No products yet.
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
 
-<!-- SELLER -->
+<section class="container" id="seller">
 
-<section
-class="section"
-id="seller">
+  <div class="seller">
 
-<div class="seller-area">
+    <h2>🏪 Sell on Valzo Hub</h2>
 
-<h2>
-🏪 Sell on Valzo Hub
-</h2>
+    <p>
+      List your product and reach customers.
+    </p>
 
-<p>
-Create your product listing and reach customers.
-</p>
+    <div class="form">
 
-<div class="form">
+      <label>Seller Name</label>
 
-<label>
-Seller Name
-</label>
+      <input id="sellerName"
+        placeholder="Your name">
 
-<input
-id="sellerName"
-placeholder="Your name">
 
-<label>
-Product Name
-</label>
+      <label>Product Name</label>
 
-<input
-id="productName"
-placeholder="Example: Mobile Cover">
+      <input id="productName"
+        placeholder="Example: Mobile Cover">
 
-<label>
-Product Price ₹
-</label>
 
-<input
-id="productPrice"
-type="number"
-min="1"
-placeholder="299">
+      <label>Product Price ₹</label>
 
-<label>
-Product Image URL
-</label>
+      <input id="productPrice"
+        type="number"
+        min="1"
+        placeholder="299">
 
-<input
-id="productImage"
-type="url"
-placeholder="https://...">
 
-<label>
-Product Description
-</label>
+      <label>Product Image URL</label>
 
-<textarea
-id="productDescription"
-placeholder="Tell customers about your product...">
-</textarea>
+      <input id="productImage"
+        type="url"
+        placeholder="Direct image URL (.jpg / .png)">
 
-<button
-class="submit"
-onclick="addSellerProduct()">
-➕ Publish Product
-</button>
 
-</div>
+      <label>Product Description</label>
 
-</div>
+      <textarea id="productDescription"
+        placeholder="Tell customers about your product..."></textarea>
 
+
+      <button class="publish"
+        onclick="addSellerProduct()">
+        🚀 Publish Product
+      </button>
+
+    </div>
+  </div>
 </section>
 
 
 <footer>
 
-<p>
-<strong>Valzo Hub</strong>
-— Shop • Sell • Discover
-</p>
+  <p>
+    <strong>Valzo Hub</strong> — Shop • Sell • Discover
+  </p>
 
-<p>
-© 2026 Valzo Hub. All Rights Reserved.
-</p>
+  <p>
+    © 2026 Valzo Hub. All Rights Reserved.
+  </p>
 
-<p>
-Contact: Aadi | WhatsApp: 7016006504
-</p>
+  <p>
+    Contact: Aadi | WhatsApp: 7016006504
+  </p>
 
 </footer>
 
 
-<!-- CART -->
+<div class="cart-panel" id="cartPanel">
 
-<div
-class="cart"
-id="cart">
+  <div class="cart-head">
 
-<div class="cart-head">
+    <h2>🛒 Your Cart</h2>
 
-<h2>
-🛒 Your Cart
-</h2>
+    <button class="close"
+      onclick="closeCart()">×</button>
 
-<button
-class="close"
-onclick="closeCart()">
-×
-</button>
+  </div>
 
-</div>
+  <div id="cartItems">
+    <div class="empty">Your cart is empty.</div>
+  </div>
 
-<div id="cartItems">
+  <div class="total">
+    Total: ₹<span id="cartTotal">0</span>
+  </div>
 
-<div class="empty">
-Your cart is empty.
-</div>
-
-</div>
-
-<div class="total">
-
-Total: ₹<span id="cartTotal">0</span>
-
-</div>
-
-<button
-class="order"
-onclick="orderWhatsApp()">
-💬 Order on WhatsApp
-</button>
+  <button class="order"
+    onclick="orderWhatsApp()">
+    💬 Order on WhatsApp
+  </button>
 
 </div>
 
 
-<div
-class="toast"
-id="toast">
-</div>
+<div class="toast" id="toast"></div>
 
 
 <script type="module">
 
 import {
   initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
-  sendPasswordResetEmail
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+  sendPasswordResetEmail,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
   getFirestore,
@@ -1234,65 +1043,57 @@ import {
   query,
   where,
   serverTimestamp
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+const firebaseConfig = {
 
-const firebaseConfig={
+  apiKey:"AIzaSyALKvKM7b1Y-raRK1TdtWSJAuZGKX0RGbU",
 
-apiKey:
-"AIzaSyALKvKM7b1Y-raRK1TdtWSJAuZGKX0RGbU",
+  authDomain:"valzo-hub-d21b4.firebaseapp.com",
 
-authDomain:
-"valzo-hub-d21b4.firebaseapp.com",
+  projectId:"valzo-hub-d21b4",
 
-projectId:
-"valzo-hub-d21b4",
+  storageBucket:"valzo-hub-d21b4.firebasestorage.app",
 
-storageBucket:
-"valzo-hub-d21b4.firebasestorage.app",
+  messagingSenderId:"720721563863",
 
-messagingSenderId:
-"720721563863",
+  appId:"1:720721563863:web:7cf5b925ad68433e2a2092",
 
-appId:
-"1:720721563863:web:7cf5b925ad68433e2a2092",
-
-measurementId:
-"G-GYYCEJKQES"
+  measurementId:"G-GYYCEJKQES"
 
 };
 
 
-const app=initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth = getAuth(app);
 
-const db=getFirestore(app);
+const db = getFirestore(app);
 
 
-let currentUser=null;
+let currentUser = null;
 
-let cart=[];
+let cartItems = [];
+
+let loadedProductIds = new Set();
+
+let loadedProductKeys = new Set();
 
 
 /* TOAST */
 
-function toast(text){
+function toast(message){
 
-const el=document.getElementById("toast");
+  const el=document.getElementById("toast");
 
-el.innerText=text;
+  el.innerText=message;
 
-el.classList.add("show");
+  el.classList.add("show");
 
-setTimeout(()=>{
-
-el.classList.remove("show");
-
-},3000);
+  setTimeout(()=>{
+    el.classList.remove("show");
+  },2800);
 
 }
 
@@ -1301,131 +1102,85 @@ el.classList.remove("show");
 
 onAuthStateChanged(auth,async(user)=>{
 
-currentUser=user;
+  currentUser=user;
 
-const loginNav=
-document.getElementById("loginNav");
+  const loginNav=document.getElementById("loginNav");
 
-const logoutNav=
-document.getElementById("logoutNav");
+  const logoutNav=document.getElementById("logoutNav");
 
-const dashboard=
-document.getElementById("dashboard");
+  const dashboard=document.getElementById("dashboard");
 
+  if(user){
 
-if(user){
+    loginNav.style.display="none";
 
-loginNav.style.display="none";
+    logoutNav.style.display="block";
 
-logoutNav.style.display="block";
+    document.getElementById("authStatus").innerText=
+      "Logged in as "+user.email;
 
-document.getElementById("authStatus").innerText=
-"Logged in as "+user.email;
+    dashboard.classList.add("show");
 
-dashboard.classList.add("show");
+    document.getElementById("dashboardUser").innerText=
+      user.email;
 
-document.getElementById("dashboardUser").innerText=
-user.email;
+    await loadMyProducts();
 
-await loadMyProducts();
+  }else{
 
-}else{
+    loginNav.style.display="block";
 
-loginNav.style.display="block";
+    logoutNav.style.display="none";
 
-logoutNav.style.display="none";
+    document.getElementById("authStatus").innerText=
+      "Not logged in";
 
-document.getElementById("authStatus").innerText=
-"Not logged in";
+    dashboard.classList.remove("show");
 
-dashboard.classList.remove("show");
-
-}
+  }
 
 });
 
 
-/* CREATE ACCOUNT */
+/* SIGN UP */
 
 window.signupUser=async function(){
 
-const email=
-document.getElementById("authEmail")
-.value.trim();
+  const email=document.getElementById("authEmail")
+    .value.trim();
 
-const password=
-document.getElementById("authPassword")
-.value;
+  const password=document.getElementById("authPassword")
+    .value;
 
+  if(!email||!password){
 
-if(!email){
+    toast("Email and password enter karo.");
 
-toast("Email enter karo.");
+    return;
+  }
 
-return;
+  if(password.length<6){
 
-}
+    toast("Password minimum 6 characters hovu joie.");
 
+    return;
+  }
 
-if(!password){
+  try{
 
-toast("Password enter karo.");
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-return;
+    toast("Account created 🎉");
 
-}
+  }catch(error){
 
+    toast(firebaseError(error));
 
-if(password.length<6){
-
-toast("Password minimum 6 characters hovu joie.");
-
-return;
-
-}
-
-
-try{
-
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-toast(
-"Account created successfully 🎉"
-);
-
-}catch(error){
-
-console.log(error);
-
-if(error.code==="auth/email-already-in-use"){
-
-toast(
-"Aa email thi account already che. Login karo."
-);
-
-}else if(error.code==="auth/invalid-email"){
-
-toast(
-"Email address barabar nathi."
-);
-
-}else if(error.code==="auth/weak-password"){
-
-toast(
-"Password thodu strong rakho."
-);
-
-}else{
-
-toast(error.message);
-
-}
-
-}
+  }
 
 };
 
@@ -1434,123 +1189,63 @@ toast(error.message);
 
 window.loginUser=async function(){
 
-const email=
-document.getElementById("authEmail")
-.value.trim();
+  const email=document.getElementById("authEmail")
+    .value.trim();
 
-const password=
-document.getElementById("authPassword")
-.value;
+  const password=document.getElementById("authPassword")
+    .value;
 
+  if(!email||!password){
 
-if(!email||!password){
+    toast("Email and password enter karo.");
 
-toast(
-"Email ane password banne enter karo."
-);
+    return;
+  }
 
-return;
+  try{
 
-}
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
+    toast("Welcome to Valzo Hub 🔥");
 
-try{
+  }catch(error){
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+    toast(firebaseError(error));
 
-toast(
-"Welcome to Valzo Hub 🔥"
-);
-
-}catch(error){
-
-console.log(error);
-
-if(
-error.code==="auth/invalid-credential" ||
-error.code==="auth/wrong-password" ||
-error.code==="auth/user-not-found"
-){
-
-toast(
-"Email athva password incorrect che."
-);
-
-}else if(error.code==="auth/invalid-email"){
-
-toast(
-"Email address barabar nathi."
-);
-
-}else{
-
-toast(error.message);
-
-}
-
-}
+  }
 
 };
 
 
 /* FORGOT PASSWORD */
 
-window.resetPassword=async function(){
+window.forgotPassword=async function(){
 
-const email=
-document.getElementById("authEmail")
-.value.trim();
+  const email=document.getElementById("authEmail")
+    .value.trim();
 
+  if(!email){
 
-if(!email){
+    toast("Pehla email address enter karo.");
 
-toast(
-"Pehla email address lakho."
-);
+    return;
+  }
 
-return;
+  try{
 
-}
+    await sendPasswordResetEmail(auth,email);
 
+    toast("Password reset email Gmail par mokli didho 📧");
 
-try{
+  }catch(error){
 
-await sendPasswordResetEmail(
-auth,
-email
-);
+    toast(firebaseError(error));
 
-toast(
-"Password reset email mokli didho 📧 Gmail check karo."
-);
-
-}catch(error){
-
-console.log(error);
-
-if(error.code==="auth/user-not-found"){
-
-toast(
-"Aa email thi account malyu nathi."
-);
-
-}else if(error.code==="auth/invalid-email"){
-
-toast(
-"Email address barabar nathi."
-);
-
-}else{
-
-toast(error.message);
-
-}
-
-}
+  }
 
 };
 
@@ -1559,150 +1254,139 @@ toast(error.message);
 
 window.logout=async function(){
 
-try{
+  try{
 
-await signOut(auth);
+    await signOut(auth);
 
-toast(
-"Logged out successfully."
-);
+    toast("Logged out.");
 
-}catch(error){
+  }catch(error){
 
-toast(error.message);
+    toast(firebaseError(error));
 
-}
+  }
 
 };
 
 
-/* SELLER PRODUCT */
+/* PUBLISH PRODUCT */
 
 window.addSellerProduct=async function(){
 
-if(!currentUser){
+  if(!currentUser){
 
-toast(
-"Pehla login karo."
-);
+    toast("Pehla login karo 🔐");
 
-scrollAuth();
+    scrollAuth();
 
-return;
+    return;
+  }
 
-}
+  const sellerName=document
+    .getElementById("sellerName")
+    .value.trim();
 
+  const name=document
+    .getElementById("productName")
+    .value.trim();
 
-const sellerName=
-document.getElementById("sellerName")
-.value.trim();
+  const price=Number(
+    document.getElementById("productPrice").value
+  );
 
-const name=
-document.getElementById("productName")
-.value.trim();
+  const image=document
+    .getElementById("productImage")
+    .value.trim();
 
-const price=
-Number(
-document.getElementById("productPrice").value
-);
-
-const image=
-document.getElementById("productImage")
-.value.trim();
-
-const description=
-document.getElementById("productDescription")
-.value.trim();
+  const description=document
+    .getElementById("productDescription")
+    .value.trim();
 
 
-if(
-!sellerName||
-!name||
-!price||
-!image
-){
+  if(!sellerName||!name||!price||!image){
 
-toast(
-"Required details fill karo."
-);
+    toast("Required details fill karo.");
 
-return;
-
-}
+    return;
+  }
 
 
-try{
+  try{
 
-const productData={
+    const productData={
 
-sellerName:sellerName,
+      sellerName:sellerName,
 
-name:name,
+      name:name,
 
-price:price,
+      price:price,
 
-image:image,
+      image:image,
 
-description:description,
+      description:description,
 
-sellerId:currentUser.uid,
+      sellerId:currentUser.uid,
 
-sellerEmail:currentUser.email,
+      sellerEmail:currentUser.email,
 
-createdAt:serverTimestamp()
+      createdAt:serverTimestamp()
 
-};
-
-
-const saved=
-await addDoc(
-collection(db,"products"),
-productData
-);
+    };
 
 
-addProductCard({
+    const duplicateQuery=query(
 
-...productData,
+      collection(db,"products"),
 
-id:saved.id
+      where("sellerId","==",currentUser.uid),
 
-});
+      where("name","==",name)
 
-
-document.getElementById("sellerName")
-.value="";
-
-document.getElementById("productName")
-.value="";
-
-document.getElementById("productPrice")
-.value="";
-
-document.getElementById("productImage")
-.value="";
-
-document.getElementById("productDescription")
-.value="";
+    );
 
 
-await loadMyProducts();
+    const existing=await getDocs(duplicateQuery);
 
 
-toast(
-"Product published successfully 🎉"
-);
+    if(!existing.empty){
+
+      toast("Aa product already publish karyu che.");
+
+      return;
+    }
 
 
-}catch(error){
+    const ref=await addDoc(
+      collection(db,"products"),
+      productData
+    );
 
-console.error(error);
 
-toast(
-"Product save failed: "+error.message
-);
+    addProductCard({
+      ...productData,
+      id:ref.id
+    });
 
-}
+
+    document.getElementById("sellerName").value="";
+    document.getElementById("productName").value="";
+    document.getElementById("productPrice").value="";
+    document.getElementById("productImage").value="";
+    document.getElementById("productDescription").value="";
+
+
+    await loadMyProducts();
+
+    toast("Product published successfully 🎉");
+
+
+  }catch(error){
+
+    toast("Publish failed: "+firebaseError(error));
+
+    console.error(error);
+
+  }
 
 };
 
@@ -1711,35 +1395,43 @@ toast(
 
 async function loadProducts(){
 
-try{
+  try{
 
-const snapshot=
-await getDocs(
-collection(db,"products")
-);
+    const snapshot=
+      await getDocs(collection(db,"products"));
 
+    snapshot.forEach(item=>{
 
-snapshot.forEach(item=>{
+      const data=item.data();
 
-addProductCard({
+      const key=
+        String(data.sellerId||"")+"|"+
+        String(data.name||"").toLowerCase();
 
-...item.data(),
+      if(
+        loadedProductIds.has(item.id) ||
+        loadedProductKeys.has(key)
+      ){
 
-id:item.id
+        return;
+      }
 
-});
+      loadedProductIds.add(item.id);
 
-});
+      loadedProductKeys.add(key);
 
+      addProductCard({
+        ...data,
+        id:item.id
+      });
 
-}catch(error){
+    });
 
-console.error(
-"Products load error:",
-error
-);
+  }catch(error){
 
-}
+    console.error("Products load error:",error);
+
+  }
 
 }
 
@@ -1748,118 +1440,133 @@ error
 
 function addProductCard(data){
 
-const list=
-document.getElementById("productList");
+  const list=document.getElementById("productList");
+
+  const key=
+    String(data.sellerId||"")+"|"+
+    String(data.name||"").toLowerCase();
 
 
-const card=
-document.createElement("div");
+  if(
+    data.id &&
+    loadedProductIds.has(data.id)
+  ){
 
-card.className="product";
-
-card.dataset.name=
-data.name||"Product";
-
-
-const safeName=
-escapeHtml(
-data.name||"Product"
-);
-
-const safeDescription=
-escapeHtml(
-data.description||
-"Available on Valzo Hub."
-);
-
-const safeImage=
-escapeHtml(
-data.image||""
-);
-
-const safeSeller=
-escapeHtml(
-data.sellerName||
-"Valzo Seller"
-);
-
-const price=
-Number(data.price||0);
+    return;
+  }
 
 
-card.innerHTML=`
+  if(
+    loadedProductKeys.has(key)
+  ){
 
-<div class="product-image">
-
-<span class="product-badge">
-NEW
-</span>
-
-<button class="wishlist">
-♡
-</button>
-
-<img
-src="${safeImage}"
-alt="${safeName}"
-onerror="this.src='https://via.placeholder.com/700x500?text=Valzo+Hub'">
-
-</div>
-
-<div class="product-info">
-
-<h3>${safeName}</h3>
-
-<div class="description">
-${safeDescription}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-₹${price.toLocaleString("en-IN")}
-</div>
-
-<button class="add-btn">
-Add +
-</button>
-
-</div>
-
-<p style="font-size:11px;color:#888;margin-top:9px">
-Seller: ${safeSeller}
-</p>
-
-</div>
-`;
+    return;
+  }
 
 
-card.querySelector(".wishlist")
-.addEventListener(
-"click",
-function(){
+  if(data.id){
 
-toggleWish(this);
+    loadedProductIds.add(data.id);
 
-}
-);
+  }
+
+  loadedProductKeys.add(key);
 
 
-card.querySelector(".add-btn")
-.addEventListener(
-"click",
-function(){
+  const card=document.createElement("div");
 
-addToCart(
-data.name,
-price
-);
+  card.className="product";
 
-}
-);
+  card.dataset.name=data.name||"Product";
+
+  const safeName=escapeHtml(
+    data.name||"Product"
+  );
+
+  const safeDescription=escapeHtml(
+    data.description||
+    "Available on Valzo Hub."
+  );
+
+  const safeImage=escapeHtml(
+    data.image||""
+  );
+
+  const seller=escapeHtml(
+    data.sellerName||
+    "Valzo Seller"
+  );
+
+  const price=Number(data.price||0);
 
 
-list.appendChild(card);
+  card.innerHTML=`
+
+    <div class="product-image">
+
+      <span class="badge">NEW</span>
+
+      <button class="wish">♡</button>
+
+      <img
+        src="${safeImage}"
+        alt="${safeName}"
+        onerror="this.src='https://placehold.co/700x500?text=Valzo+Hub'">
+
+    </div>
+
+    <div class="product-info">
+
+      <h3>${safeName}</h3>
+
+      <div class="desc">
+        ${safeDescription}
+      </div>
+
+      <div class="rating">
+        ★ 4.5 • Valzo Seller
+      </div>
+
+      <div class="product-bottom">
+
+        <div class="price">
+          ₹${price.toLocaleString("en-IN")}
+        </div>
+
+        <button class="add">
+          Add +
+        </button>
+
+      </div>
+
+      <p style="font-size:11px;color:#888;margin-top:8px">
+        Seller: ${seller}
+      </p>
+
+    </div>
+  `;
+
+
+  card.querySelector(".wish")
+    .addEventListener("click",function(){
+
+      toggleWish(this);
+
+    });
+
+
+  card.querySelector(".add")
+    .addEventListener("click",function(){
+
+      addToCart(
+        data.name,
+        price
+      );
+
+    });
+
+
+  list.appendChild(card);
 
 }
 
@@ -1868,146 +1575,184 @@ list.appendChild(card);
 
 async function loadMyProducts(){
 
-if(!currentUser)return;
+  if(!currentUser)return;
+
+  const list=document.getElementById("myProducts");
+
+  list.innerHTML="";
+
+  try{
+
+    const q=query(
+
+      collection(db,"products"),
+
+      where(
+        "sellerId",
+        "==",
+        currentUser.uid
+      )
+
+    );
 
 
-const list=
-document.getElementById("myProducts");
-
-list.innerHTML="";
+    const snapshot=await getDocs(q);
 
 
-try{
+    if(snapshot.empty){
 
-const q=
-query(
-collection(db,"products"),
-where(
-"sellerId",
-"==",
-currentUser.uid
-)
-);
+      list.innerHTML=
+        '<div class="empty">You have not published any product yet.</div>';
+
+      return;
+    }
 
 
-const snapshot=
-await getDocs(q);
+    const seen=new Set();
 
 
-if(snapshot.empty){
+    snapshot.forEach(item=>{
 
-list.innerHTML=
-'<div class="empty">You have not published any product yet.</div>';
+      const data=item.data();
 
-return;
+      const duplicateKey=
+        String(data.name||"").toLowerCase();
+
+
+      if(seen.has(duplicateKey))return;
+
+      seen.add(duplicateKey);
+
+
+      const row=document.createElement("div");
+
+      row.className="my-product";
+
+
+      row.innerHTML=`
+
+        <div>
+
+          <strong>
+            ${escapeHtml(data.name||"Product")}
+          </strong>
+
+          <br>
+
+          ₹${Number(data.price||0)
+            .toLocaleString("en-IN")}
+
+          <br>
+
+          <small style="color:#888">
+            ${escapeHtml(
+              data.description||""
+            )}
+          </small>
+
+        </div>
+
+        <button class="delete">
+          Delete
+        </button>
+
+      `;
+
+
+      row.querySelector(".delete")
+        .addEventListener(
+          "click",
+          async()=>{
+
+            if(
+              !confirm(
+                "Product delete karvo che?"
+              )
+            )return;
+
+
+            try{
+
+              await deleteDoc(
+                doc(
+                  db,
+                  "products",
+                  item.id
+                )
+              );
+
+
+              row.remove();
+
+              removeProductCard(
+                item.id,
+                data.name,
+                data.sellerId
+              );
+
+              toast("Product deleted 🗑️");
+
+            }catch(error){
+
+              toast(
+                "Delete failed: "+
+                firebaseError(error)
+              );
+
+            }
+
+          }
+        );
+
+
+      list.appendChild(row);
+
+    });
+
+
+  }catch(error){
+
+    list.innerHTML=
+      '<div class="empty">Dashboard load error.</div>';
+
+    console.error(error);
+
+  }
 
 }
 
 
-snapshot.forEach(item=>{
+/* REMOVE MAIN CARD */
 
-const data=item.data();
-
-
-const row=
-document.createElement("div");
-
-row.className="my-product";
-
-
-row.innerHTML=`
-
-<div>
-
-<strong>
-${escapeHtml(
-data.name||"Product"
-)}
-</strong>
-
-<br>
-
-₹${Number(
-data.price||0
-).toLocaleString("en-IN")}
-
-<br>
-
-<small style="color:#888">
-${escapeHtml(
-data.description||""
-)}
-</small>
-
-</div>
-
-<button class="delete">
-Delete
-</button>
-`;
-
-
-row.querySelector(".delete")
-.addEventListener(
-"click",
-async()=>{
-
-if(
-!confirm(
-"Product delete karvo che?"
-)
+function removeProductCard(
+  id,
+  name,
+  sellerId
 ){
 
-return;
-
-}
-
-
-try{
-
-await deleteDoc(
-doc(
-db,
-"products",
-item.id
-)
-);
+  const key=
+    String(sellerId||"")+"|"+
+    String(name||"").toLowerCase();
 
 
-row.remove();
+  document
+    .querySelectorAll(".product")
+    .forEach(card=>{
+
+      if(
+        card.dataset.firebaseId===id
+      ){
+
+        card.remove();
+
+      }
+
+    });
 
 
-toast(
-"Product deleted."
-);
+  loadedProductIds.delete(id);
 
-
-}catch(error){
-
-toast(
-"Delete failed: "+
-error.message
-);
-
-}
-
-}
-);
-
-
-list.appendChild(row);
-
-});
-
-
-}catch(error){
-
-console.error(error);
-
-list.innerHTML=
-'<div class="empty">Dashboard load error.</div>';
-
-}
+  loadedProductKeys.delete(key);
 
 }
 
@@ -2016,27 +1761,28 @@ list.innerHTML=
 
 window.searchProducts=function(){
 
-const value=
-document.getElementById("search")
-.value
-.toLowerCase();
+  const value=
+    document.getElementById("search")
+    .value
+    .toLowerCase()
+    .trim();
 
 
-document
-.querySelectorAll(".product")
-.forEach(card=>{
+  document
+    .querySelectorAll(".product")
+    .forEach(card=>{
 
-const name=
-(card.dataset.name||"")
-.toLowerCase();
+      const name=
+        (card.dataset.name||"")
+        .toLowerCase();
 
 
-card.style.display=
-name.includes(value)
-?"block"
-:"none";
+      card.style.display=
+        name.includes(value)
+        ? ""
+        : "none";
 
-});
+    });
 
 };
 
@@ -2045,27 +1791,23 @@ name.includes(value)
 
 window.toggleWish=function(btn){
 
-if(btn.innerText==="♡"){
+  if(btn.innerText==="♡"){
 
-btn.innerText="♥";
+    btn.innerText="♥";
 
-btn.style.color="#ff3f65";
+    btn.style.color="#ef4444";
 
-toast(
-"Added to wishlist ❤️"
-);
+    toast("Added to wishlist ❤️");
 
-}else{
+  }else{
 
-btn.innerText="♡";
+    btn.innerText="♡";
 
-btn.style.color="";
+    btn.style.color="";
 
-toast(
-"Removed from wishlist"
-);
+    toast("Removed from wishlist");
 
-}
+  }
 
 };
 
@@ -2074,125 +1816,106 @@ toast(
 
 window.addToCart=function(name,price){
 
-cart.push({
+  cartItems.push({
+    name:name,
+    price:Number(price)
+  });
 
-name:name,
+  updateCart();
 
-price:Number(price)
-
-});
-
-
-updateCart();
-
-
-toast(
-name+" added to cart 🛒"
-);
+  toast(name+" added to cart 🛒");
 
 };
 
 
 function updateCart(){
 
-document.getElementById(
-"cartCount"
-).innerText=
-cart.length;
+  document.getElementById("cartCount")
+    .innerText=cartItems.length;
 
 
-const box=
-document.getElementById(
-"cartItems"
-);
+  const box=
+    document.getElementById("cartItems");
 
 
-if(cart.length===0){
+  if(!cartItems.length){
 
-box.innerHTML=
-'<div class="empty">Your cart is empty.</div>';
+    box.innerHTML=
+      '<div class="empty">Your cart is empty.</div>';
 
-}else{
+  }else{
 
-box.innerHTML=
-cart.map(
-(item,index)=>`
+    box.innerHTML=
+      cartItems.map(
+        (item,index)=>`
 
-<div class="cart-item">
+        <div class="cart-item">
 
-<div>
+          <div>
 
-<strong>
-${escapeHtml(item.name)}
-</strong>
+            <strong>
+              ${escapeHtml(item.name)}
+            </strong>
 
-<br>
+            <br>
 
-₹${Number(
-item.price
-).toLocaleString("en-IN")}
+            ₹${Number(item.price)
+              .toLocaleString("en-IN")}
 
-</div>
+          </div>
 
-<button
-class="remove"
-onclick="removeItem(${index})">
-Remove
-</button>
+          <button
+            class="remove"
+            onclick="removeCartItem(${index})">
 
-</div>
+            Remove
 
-`
-).join("");
+          </button>
 
-}
+        </div>
 
+      `
+      ).join("");
 
-const total=
-cart.reduce(
-(sum,item)=>
-sum+item.price,
-0
-);
+  }
 
 
-document.getElementById(
-"cartTotal"
-).innerText=
-total.toLocaleString("en-IN");
+  const total=cartItems.reduce(
+    (sum,item)=>sum+item.price,
+    0
+  );
+
+
+  document.getElementById("cartTotal")
+    .innerText=
+    total.toLocaleString("en-IN");
 
 }
 
 
-/* REMOVE CART */
+window.removeCartItem=function(index){
 
-window.removeItem=function(index){
+  cartItems.splice(index,1);
 
-cart.splice(index,1);
-
-updateCart();
+  updateCart();
 
 };
 
-
-/* OPEN CART */
 
 window.openCart=function(){
 
-document.getElementById(
-"cart"
-).classList.add("open");
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
 
 };
 
 
-/* CLOSE CART */
-
 window.closeCart=function(){
 
-document.getElementById(
-"cart"
-).classList.remove("open");
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
 
 };
 
@@ -2201,105 +1924,153 @@ document.getElementById(
 
 window.orderWhatsApp=function(){
 
-if(!cart.length){
+  if(!cartItems.length){
 
-toast(
-"Cart empty che."
-);
+    toast("Cart empty che.");
 
-return;
-
-}
+    return;
+  }
 
 
-let message=
-"Hello Valzo Hub! 👋\n\n"+
-"I want to order:\n";
+  let message=
+    "Hello Valzo Hub! 👋\n\n"+
+    "I want to order:\n";
 
 
-cart.forEach(
-(item,index)=>{
+  cartItems.forEach(
+    (item,index)=>{
 
-message+=
-(index+1)+
-". "+
-item.name+
-" - ₹"+
-item.price+
-"\n";
+      message+=
+        (index+1)+". "+
+        item.name+
+        " - ₹"+
+        item.price+
+        "\n";
 
-}
-);
-
-
-const total=
-cart.reduce(
-(sum,item)=>
-sum+item.price,
-0
-);
+    }
+  );
 
 
-message+=
-"\nTotal: ₹"+
-total+
-"\n\n"+
-"Please confirm my order. 😊";
+  const total=cartItems.reduce(
+    (sum,item)=>sum+item.price,
+    0
+  );
 
 
-window.open(
-"https://wa.me/917016006504?text="+
-encodeURIComponent(message),
-"_blank"
-);
+  message+=
+    "\nTotal: ₹"+total+
+    "\n\nPlease confirm my order. 😊";
+
+
+  window.open(
+    "https://wa.me/917016006504?text="+
+    encodeURIComponent(message),
+    "_blank"
+  );
 
 };
 
 
-/* NAV */
+/* NAVIGATION */
 
 window.scrollAuth=function(){
 
-document
-.getElementById("auth")
-.scrollIntoView({
-behavior:"smooth"
-});
+  document.getElementById("auth")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 };
 
 
 window.scrollSeller=function(){
 
-document
-.getElementById("seller")
-.scrollIntoView({
-behavior:"smooth"
-});
+  document.getElementById("seller")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 };
 
 
-/* SAFE HTML */
+window.goProducts=function(){
+
+  document.getElementById("products")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+};
+
+
+/* ESCAPE */
 
 function escapeHtml(value){
 
-return String(value)
+  return String(value)
 
-.replace(/&/g,"&amp;")
+    .replace(/&/g,"&amp;")
 
-.replace(/</g,"&lt;")
+    .replace(/</g,"&lt;")
 
-.replace(/>/g,"&gt;")
+    .replace(/>/g,"&gt;")
 
-.replace(/"/g,"&quot;")
+    .replace(/"/g,"&quot;")
 
-.replace(/'/g,"&#039;");
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* FIREBASE ERROR */
+
+function firebaseError(error){
+
+  const code=error?.code||"";
+
+  if(code.includes("invalid-credential"))
+    return "Email/password incorrect che.";
+
+  if(code.includes("invalid-email"))
+    return "Email address valid nathi.";
+
+  if(code.includes("email-already-in-use"))
+    return "Aa email thi account already che.";
+
+  if(code.includes("weak-password"))
+    return "Password minimum 6 characters rakho.";
+
+  if(code.includes("user-not-found"))
+    return "Aa email thi account malyu nathi.";
+
+  if(code.includes("wrong-password"))
+    return "Password incorrect che.";
+
+  if(code.includes("network-request-failed"))
+    return "Internet connection check karo.";
+
+  if(code.includes("permission-denied"))
+    return "Firestore Rules permission deny kare che.";
+
+  return error?.message||"Something went wrong.";
 
 }
 
 
 /* START */
+
+document
+  .querySelectorAll(".product[data-static='true']")
+  .forEach(card=>{
+
+    loadedProductKeys.add(
+      "static|"+
+      (card.dataset.name||"")
+      .toLowerCase()
+    );
+
+  });
+
 
 loadProducts();
 
@@ -2309,3 +2080,4 @@ updateCart();
 
 </body>
 </html>
+```
