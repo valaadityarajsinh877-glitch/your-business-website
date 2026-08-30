@@ -1,10 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="google-site-verification" content="1V8GeLxAzc0Y3_e2lPW4jWkG0M0zp96i1JCumHF5_RM">
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="xWQkvCf3CGu8r_oScoSCU24lAVUMucOFfFFgU-Vzc90" />
 
   <title>Valzo Hub - Online Shopping & Business Hub</title>
 
@@ -293,7 +295,7 @@
     <div class="category" onclick="filterProducts('gift')">🎁 Gifts</div>
   </div>
 
-  <div class="products">
+  <div class="products" id="products">
 
     <div class="product" data-category="fashion" data-name="Premium T Shirt">
       <div class="product-img">👕</div>
@@ -467,11 +469,11 @@
 </footer>
 
 <script>
-
   let cart = [];
 
-  function addCart(name, price) {
+  const whatsappNumber = "917016006504";
 
+  function addCart(name, price) {
     cart.push({
       name: name,
       price: price
@@ -492,7 +494,7 @@
     let total = 0;
 
     let message =
-      "Valzo Hub Order%0A%0A";
+      "Valzo Hub Order\n\n";
 
     cart.forEach((item, index) => {
 
@@ -502,24 +504,20 @@
         item.name +
         " - ₹" +
         item.price +
-        "%0A";
+        "\n";
 
       total += item.price;
-
     });
 
     message +=
-      "%0ATotal: ₹" +
+      "\nTotal: ₹" +
       total;
-
-    const whatsappNumber =
-      "917016006504";
 
     window.open(
       "https://wa.me/" +
       whatsappNumber +
       "?text=" +
-      message,
+      encodeURIComponent(message),
       "_blank"
     );
   }
@@ -540,14 +538,9 @@
       let name =
         product.dataset.name.toLowerCase();
 
-      if (name.includes(search)) {
-        product.style.display = "block";
-      } else {
-        product.style.display = "none";
-      }
-
+      product.style.display =
+        name.includes(search) ? "block" : "none";
     });
-
   }
 
   function filterProducts(category) {
@@ -561,17 +554,13 @@
         category === "all" ||
         product.dataset.category === category
       ) {
-
         product.style.display = "block";
-
       } else {
-
         product.style.display = "none";
-
       }
-
     });
 
+    document.getElementById("search").value = "";
   }
 
   function submitSeller(event) {
@@ -593,37 +582,24 @@
     let message =
       document.getElementById("sellerMessage").value;
 
-    const whatsappNumber =
-      "917016006504";
-
     let text =
-      "Valzo Hub Seller Application%0A%0A" +
-      "Name: " +
-      encodeURIComponent(name) +
-      "%0A" +
-      "Business: " +
-      encodeURIComponent(business) +
-      "%0A" +
-      "Phone: " +
-      encodeURIComponent(phone) +
-      "%0A" +
-      "Category: " +
-      encodeURIComponent(category) +
-      "%0A" +
-      "Products: " +
-      encodeURIComponent(message);
+      "Valzo Hub Seller Application\n\n" +
+      "Name: " + name + "\n" +
+      "Business: " + business + "\n" +
+      "Phone: " + phone + "\n" +
+      "Category: " + category + "\n" +
+      "Products: " + message;
 
     window.open(
       "https://wa.me/" +
       whatsappNumber +
       "?text=" +
-      text,
+      encodeURIComponent(text),
       "_blank"
     );
-
   }
-
 </script>
 
 </body>
 </html>
+```
